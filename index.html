@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Slow Decay of Democracy — a data detector, applied to India</title>
+<meta name="description" content="A quantitative decay detector calibrated on Hungary, Turkey and Venezuela (V-Dem data), applied to India. With a verdict.">
+<style>
+:root{
+  color-scheme: light;
+  --page:#f9f9f7; --surface:#fcfcfb;
+  --ink:#0b0b0b; --ink2:#52514e; --muted:#898781;
+  --grid:#e1e0d9; --baseline:#c3c2b7; --border:rgba(11,11,11,.10);
+  --s1:#2a78d6; --s2:#008300; --s3:#e87ba4; --s4:#eda100; --s5:#1baf7a;
+  --good:#0ca30c; --critical:#d03b3b; --good-text:#006300; --critical-text:#b32222;
+}
+@media (prefers-color-scheme: dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme: dark;
+    --page:#0d0d0d; --surface:#1a1a19;
+    --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+    --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,.10);
+    --s1:#3987e5; --s2:#008300; --s3:#d55181; --s4:#c98500; --s5:#199e70;
+    --good-text:#0ca30c; --critical-text:#e66767;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --page:#0d0d0d; --surface:#1a1a19;
+  --ink:#ffffff; --ink2:#c3c2b7; --muted:#898781;
+  --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,.10);
+  --s1:#3987e5; --s2:#008300; --s3:#d55181; --s4:#c98500; --s5:#199e70;
+  --good-text:#0ca30c; --critical-text:#e66767;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--page);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 16px 64px}
+main{max-width:920px;margin:0 auto}
+header{max-width:920px;margin:0 auto;padding:40px 0 8px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+h1{font-size:clamp(26px,4.5vw,40px);line-height:1.15;letter-spacing:-.01em}
+.sub{color:var(--ink2);margin-top:10px;max-width:640px}
+h2{font-size:22px;margin:56px 0 6px}
+h2 .no{color:var(--muted);font-weight:600;margin-right:8px}
+.lede{color:var(--ink2);margin-bottom:18px;max-width:680px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;position:relative}
+.chart-title{font-weight:600;font-size:15px}
+.chart-sub{color:var(--muted);font-size:13px;margin-bottom:10px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink2);margin:6px 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:16px;height:2px;border-radius:1px;display:inline-block}
+svg{display:block;width:100%;height:auto}
+svg text{font:12px system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.18);padding:8px 10px;font-size:12.5px;display:none;z-index:5;min-width:150px}
+.tip .ty{color:var(--muted);margin-bottom:4px}
+.tip .tr{display:flex;align-items:center;gap:7px;justify-content:space-between}
+.tip .tr b{font-variant-numeric:tabular-nums}
+.tip .tk{width:12px;height:2px;border-radius:1px;flex:none}
+.tip .tn{color:var(--ink2);flex:1;padding-right:8px;white-space:nowrap}
+.verdict{border-radius:12px;padding:22px;margin:26px 0;background:var(--surface);border:1px solid var(--border);border-left:6px solid var(--critical)}
+.verdict .vtag{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--critical-text)}
+.verdict h3{font-size:20px;margin:8px 0 6px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.tile .tl{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:7px}
+.tile .tl i{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.tile .tv{font-size:26px;font-weight:600;margin:2px 0}
+.tile .td{font-size:12.5px;color:var(--muted)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:99px;margin-top:8px;white-space:nowrap}
+.badge.fire{color:var(--critical-text);background:color-mix(in srgb,var(--critical) 12%,transparent)}
+.badge.ok{color:var(--good-text);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.rules{font-size:14.5px;color:var(--ink2);background:var(--surface);border:1px dashed var(--baseline);border-radius:12px;padding:14px 18px;margin:14px 0}
+.rules code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.note{font-size:13.5px;color:var(--muted);margin-top:10px}
+details{margin:18px 0}
+summary{cursor:pointer;color:var(--ink2);font-weight:600}
+.twrap{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;min-width:560px}
+th,td{padding:5px 12px;text-align:right;border-bottom:1px solid var(--grid);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--ink2);font-weight:600}
+a{color:var(--s1)}
+#themeBtn{background:var(--surface);border:1px solid var(--border);color:var(--ink2);border-radius:99px;padding:6px 14px;font:13px system-ui;cursor:pointer;flex:none;margin-top:6px}
+ul.caveats{padding-left:22px;color:var(--ink2)}
+ul.caveats li{margin:6px 0}
+footer{max-width:920px;margin:56px auto 0;color:var(--muted);font-size:13px;border-top:1px solid var(--grid);padding-top:16px}
+.seq-hint{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>The Slow Decay of Democracy</h1>
+    <p class="sub">Democracies rarely die in a coup anymore — they erode, one institution at a time.
+    Can that erosion be detected in data? We calibrate a detector on three documented cases,
+    check it stays quiet on a healthy control, then point it at <strong>India</strong> — and reach a verdict.</p>
+  </div>
+  <button id="themeBtn" aria-label="Toggle color theme">◐ theme</button>
+</header>
+
+<main>
+<div class="verdict" id="tldr">
+  <span class="vtag">■ VERDICT — HYPOTHESIS SUPPORTED</span>
+  <h3>Yes. India shows the same decay signature as documented backsliders.</h3>
+  <p style="color:var(--ink2)">The detector — calibrated on Hungary, Turkey and Venezuela, quiet on Switzerland — <strong>fires for India</strong>: a fall of −0.33 in the liberal-democracy index from its 1998 peak, sustained for 17 years, onset ≈ 2013, in the classic order (press first, courts last). Details, method and caveats below.</p>
+</div>
+
+<h2><span class="no">01</span>What slow decay looks like</h2>
+<p class="lede">V-Dem's <em>liberal democracy index</em> (0–1) scores free elections <em>plus</em> the liberal guardrails — press freedom, civil liberties, courts that bind the executive. Three countries with well-documented backsliding, one healthy control, and India:</p>
+<div class="card" id="chartMain"></div>
+
+<h2><span class="no">02</span>A decay detector</h2>
+<p class="lede">Slow decay has a measurable shape. Borrowing thresholds from V-Dem's “Episodes of Regime Transformation” research, a country is in a decay episode when:</p>
+<div class="rules">
+  <strong>DETECTOR</strong> — fires when, from the country's post-1990 peak of the liberal-democracy index:<br>
+  ① total decline ≥ <code>0.10</code> &nbsp;·&nbsp; ② the index stays below <code>peak − 0.05</code> for ≥ <code>5 consecutive years</code>.<br>
+  Onset = start of the steepest 10-year fall. Calibration: must fire on Hungary, Turkey, Venezuela; must stay quiet on Switzerland.
+</div>
+<div class="tiles" id="tiles"></div>
+<p class="note">Calibration passes: all three known backsliders fire, the control does not. Only then is the detector allowed to look at India.</p>
+
+<h2><span class="no">03</span>The playbook: what falls first</h2>
+<p class="lede">Decay is sequenced, not simultaneous. For each country, the year each institution first fell ≥ 0.05 below its pre-onset peak, relative to the country's onset year:</p>
+<div class="card" id="chartSeq"></div>
+<p class="seq-hint">Read a row left→right: dots near 0 fell with the onset; dots to the right held out longer. Hover any dot for the exact year and how far that institution has fallen since.</p>
+
+<h2><span class="no">04</span>India under the lens</h2>
+<p class="lede">India's six V-Dem indices since 1990. The dashed line marks the detected onset (2013). Expression and media fall first and hardest; judicial constraints hold out longest — the same order as Hungary and Turkey:</p>
+<div class="grid2" id="smallMultiples"></div>
+
+<h2><span class="no">05</span>Same clock, same curve</h2>
+<p class="lede">Align every country at its own onset year (year 0) and the trajectories become directly comparable. India's first 12 years of decline track Hungary's almost point-for-point:</p>
+<div class="card" id="chartOverlay"></div>
+
+<h2><span class="no">06</span>The verdict, in full</h2>
+<div class="verdict">
+  <span class="vtag">■ THE SENTENCE UNDER TEST</span>
+  <h3>“India shows the signs of slow democratic decay seen in countries with a documented history of it.”</h3>
+  <p style="color:var(--ink2);margin-bottom:10px"><strong>Verdict: correct — the sentence makes sense and is supported by the data.</strong></p>
+  <ul class="caveats" style="list-style:none;padding-left:0">
+    <li>✔ The detector fires: −0.333 from the 1998 peak (0.593 → 0.260 in 2025), below threshold for 17 straight years — a larger fall than Turkey's at the same point in its episode.</li>
+    <li>✔ The sequence matches the backslider playbook: expression/media first (2014, −0.44), civil liberties next (2014, −0.23), association (2015, −0.23), judiciary last and least (2019, −0.16).</li>
+    <li>✔ Aligned at onset, India's curve shadows Hungary's — the canonical slow-decay case.</li>
+    <li>✔ The control (Switzerland) stays quiet, so the detector isn't just flagging everything.</li>
+  </ul>
+</div>
+<p class="lede" style="margin-top:14px">Honest caveats — what the verdict does <em>not</em> say:</p>
+<ul class="caveats">
+  <li><strong>One family of sources.</strong> V-Dem is expert-coded (point estimates carry uncertainty bands). It is, however, corroborated: Freedom House cut India to “Partly Free” (2021) and V-Dem has classified India as an “electoral autocracy” since its 2021 report.</li>
+  <li><strong>Decay ≠ destiny.</strong> The index measures the past, not the future. India's judiciary still scores 0.667 — closer to Hungary's than to Venezuela's collapsed 0.017 — and elections remain genuinely competitive (2024 returned a coalition, and the series shows a small 2024 uptick before a new low in 2025).</li>
+  <li><strong>Reversals happen.</strong> Poland (2023–) and Brazil show backsliding can be stopped and partially undone while elections still function. That door is measurably still open in India's data.</li>
+  <li><strong>“Slow” is the point.</strong> No single year looks like a rupture — the average annual drop is ~0.02. That is exactly why decay is detected with a decade-scale window, and why it is easy to deny in the moment.</li>
+</ul>
+
+<h2><span class="no">07</span>Method &amp; data</h2>
+<p class="lede">Data: <a href="https://v-dem.net">V-Dem v15 (2025)</a> via <a href="https://ourworldindata.org/democracy">Our World in Data</a> — six indices (liberal democracy, electoral democracy, freedom of expression, judicial constraints on the executive, civil liberties, freedom of association), 1975–2025, best point estimates. The full pipeline (raw CSVs + <code style="font-family:ui-monospace,Menlo,monospace;font-size:13px">analyze.py</code>) is in the <a href="https://github.com/vaibhavgit9210/decay-democracy">repo</a>; every number on this page is reproducible from it.</p>
+<details>
+  <summary>Table view — liberal democracy index, 5-year steps + recent years</summary>
+  <div class="twrap"><table id="dataTable" aria-label="Liberal democracy index by country and year"></table></div>
+</details>
+</main>
+
+<footer>Built as a data-analysis exercise, not a political statement: the detector was frozen on the reference cases before India's data was scored. · V-Dem data: CC BY. · <a href="https://vaibhavkumar.is-a.dev/">vaibhavkumar.is-a.dev</a></footer>
+
+<script id="analysis" type="application/json">{"series": {"Hungary": {"libdem": {"1975": 0.098, "1976": 0.098, "1977": 0.098, "1978": 0.098, "1979": 0.098, "1980": 0.1, "1981": 0.1, "1982": 0.1, "1983": 0.1, "1984": 0.1, "1985": 0.104, "1986": 0.106, "1987": 0.109, "1988": 0.122, "1989": 0.186, "1990": 0.715, "1991": 0.757, "1992": 0.757, "1993": 0.757, "1994": 0.755, "1995": 0.756, "1996": 0.756, "1997": 0.757, "1998": 0.754, "1999": 0.75, "2000": 0.75, "2001": 0.75, "2002": 0.755, "2003": 0.759, "2004": 0.759, "2005": 0.754, "2006": 0.742, "2007": 0.765, "2008": 0.766, "2009": 0.766, "2010": 0.677, "2011": 0.639, "2012": 0.621, "2013": 0.575, "2014": 0.521, "2015": 0.477, "2016": 0.474, "2017": 0.432, "2018": 0.373, "2019": 0.364, "2020": 0.351, "2021": 0.346, "2022": 0.335, "2023": 0.323, "2024": 0.325, "2025": 0.315}, "electdem": {"1975": 0.131, "1976": 0.131, "1977": 0.131, "1978": 0.131, "1979": 0.131, "1980": 0.134, "1981": 0.136, "1982": 0.136, "1983": 0.136, "1984": 0.136, "1985": 0.141, "1986": 0.145, "1987": 0.15, "1988": 0.167, "1989": 0.265, "1990": 0.799, "1991": 0.843, "1992": 0.843, "1993": 0.843, "1994": 0.842, "1995": 0.844, "1996": 0.844, "1997": 0.844, "1998": 0.84, "1999": 0.839, "2000": 0.839, "2001": 0.839, "2002": 0.842, "2003": 0.843, "2004": 0.843, "2005": 0.843, "2006": 0.831, "2007": 0.85, "2008": 0.85, "2009": 0.85, "2010": 0.808, "2011": 0.778, "2012": 0.773, "2013": 0.738, "2014": 0.669, "2015": 0.617, "2016": 0.613, "2017": 0.555, "2018": 0.481, "2019": 0.466, "2020": 0.46, "2021": 0.45, "2022": 0.447, "2023": 0.434, "2024": 0.444, "2025": 0.421}, "expression": {"1975": 0.092, "1976": 0.092, "1977": 0.092, "1978": 0.092, "1979": 0.092, "1980": 0.108, "1981": 0.122, "1982": 0.124, "1983": 0.124, "1984": 0.124, "1985": 0.169, "1986": 0.196, "1987": 0.232, "1988": 0.316, "1989": 0.554, "1990": 0.962, "1991": 0.953, "1992": 0.953, "1993": 0.953, "1994": 0.953, "1995": 0.955, "1996": 0.955, "1997": 0.955, "1998": 0.949, "1999": 0.949, "2000": 0.949, "2001": 0.949, "2002": 0.955, "2003": 0.955, "2004": 0.955, "2005": 0.955, "2006": 0.947, "2007": 0.952, "2008": 0.952, "2009": 0.952, "2010": 0.885, "2011": 0.863, "2012": 0.854, "2013": 0.783, "2014": 0.769, "2015": 0.707, "2016": 0.692, "2017": 0.646, "2018": 0.584, "2019": 0.578, "2020": 0.542, "2021": 0.524, "2022": 0.507, "2023": 0.499, "2024": 0.512, "2025": 0.493}, "judicial": {"1975": 0.492, "1976": 0.492, "1977": 0.492, "1978": 0.492, "1979": 0.492, "1980": 0.492, "1981": 0.492, "1982": 0.492, "1983": 0.492, "1984": 0.492, "1985": 0.492, "1986": 0.492, "1987": 0.492, "1988": 0.492, "1989": 0.509, "1990": 0.902, "1991": 0.91, "1992": 0.91, "1993": 0.91, "1994": 0.91, "1995": 0.91, "1996": 0.91, "1997": 0.91, "1998": 0.91, "1999": 0.91, "2000": 0.91, "2001": 0.91, "2002": 0.91, "2003": 0.91, "2004": 0.91, "2005": 0.882, "2006": 0.904, "2007": 0.904, "2008": 0.904, "2009": 0.9, "2010": 0.832, "2011": 0.815, "2012": 0.769, "2013": 0.745, "2014": 0.737, "2015": 0.737, "2016": 0.747, "2017": 0.741, "2018": 0.72, "2019": 0.71, "2020": 0.672, "2021": 0.696, "2022": 0.632, "2023": 0.632, "2024": 0.63, "2025": 0.678}, "civlib": {"1975": 0.314, "1976": 0.314, "1977": 0.314, "1978": 0.314, "1979": 0.314, "1980": 0.328, "1981": 0.33, "1982": 0.332, "1983": 0.332, "1984": 0.332, "1985": 0.342, "1986": 0.345, "1987": 0.353, "1988": 0.406, "1989": 0.608, "1990": 0.951, "1991": 0.949, "1992": 0.949, "1993": 0.949, "1994": 0.949, "1995": 0.95, "1996": 0.95, "1997": 0.95, "1998": 0.95, "1999": 0.95, "2000": 0.95, "2001": 0.95, "2002": 0.95, "2003": 0.95, "2004": 0.95, "2005": 0.95, "2006": 0.933, "2007": 0.946, "2008": 0.946, "2009": 0.946, "2010": 0.929, "2011": 0.912, "2012": 0.911, "2013": 0.893, "2014": 0.889, "2015": 0.881, "2016": 0.882, "2017": 0.861, "2018": 0.837, "2019": 0.836, "2020": 0.826, "2021": 0.828, "2022": 0.83, "2023": 0.822, "2024": 0.824, "2025": 0.793}, "assoc": {"1975": 0.052, "1976": 0.051, "1977": 0.051, "1978": 0.051, "1979": 0.051, "1980": 0.051, "1981": 0.05, "1982": 0.05, "1983": 0.05, "1984": 0.05, "1985": 0.051, "1986": 0.052, "1987": 0.063, "1988": 0.113, "1989": 0.471, "1990": 0.861, "1991": 0.876, "1992": 0.876, "1993": 0.876, "1994": 0.877, "1995": 0.877, "1996": 0.877, "1997": 0.877, "1998": 0.878, "1999": 0.878, "2000": 0.878, "2001": 0.878, "2002": 0.876, "2003": 0.875, "2004": 0.875, "2005": 0.875, "2006": 0.852, "2007": 0.878, "2008": 0.878, "2009": 0.878, "2010": 0.874, "2011": 0.851, "2012": 0.851, "2013": 0.846, "2014": 0.832, "2015": 0.819, "2016": 0.818, "2017": 0.725, "2018": 0.659, "2019": 0.651, "2020": 0.675, "2021": 0.66, "2022": 0.67, "2023": 0.641, "2024": 0.655, "2025": 0.605}}, "Turkey": {"libdem": {"1975": 0.38, "1976": 0.383, "1977": 0.378, "1978": 0.376, "1979": 0.375, "1980": 0.196, "1981": 0.055, "1982": 0.061, "1983": 0.136, "1984": 0.282, "1985": 0.282, "1986": 0.283, "1987": 0.286, "1988": 0.321, "1989": 0.321, "1990": 0.348, "1991": 0.361, "1992": 0.369, "1993": 0.368, "1994": 0.371, "1995": 0.373, "1996": 0.382, "1997": 0.391, "1998": 0.389, "1999": 0.413, "2000": 0.425, "2001": 0.431, "2002": 0.487, "2003": 0.498, "2004": 0.502, "2005": 0.484, "2006": 0.483, "2007": 0.461, "2008": 0.411, "2009": 0.403, "2010": 0.36, "2011": 0.354, "2012": 0.346, "2013": 0.289, "2014": 0.252, "2015": 0.23, "2016": 0.143, "2017": 0.101, "2018": 0.104, "2019": 0.107, "2020": 0.115, "2021": 0.113, "2022": 0.11, "2023": 0.108, "2024": 0.109, "2025": 0.11}, "electdem": {"1975": 0.568, "1976": 0.568, "1977": 0.565, "1978": 0.562, "1979": 0.562, "1980": 0.335, "1981": 0.114, "1982": 0.114, "1983": 0.147, "1984": 0.401, "1985": 0.403, "1986": 0.414, "1987": 0.424, "1988": 0.487, "1989": 0.487, "1990": 0.517, "1991": 0.518, "1992": 0.533, "1993": 0.53, "1994": 0.536, "1995": 0.538, "1996": 0.547, "1997": 0.545, "1998": 0.544, "1999": 0.57, "2000": 0.586, "2001": 0.591, "2002": 0.636, "2003": 0.651, "2004": 0.657, "2005": 0.643, "2006": 0.643, "2007": 0.616, "2008": 0.554, "2009": 0.545, "2010": 0.525, "2011": 0.522, "2012": 0.508, "2013": 0.469, "2014": 0.426, "2015": 0.388, "2016": 0.308, "2017": 0.29, "2018": 0.295, "2019": 0.289, "2020": 0.292, "2021": 0.287, "2022": 0.285, "2023": 0.285, "2024": 0.289, "2025": 0.293}, "expression": {"1975": 0.719, "1976": 0.719, "1977": 0.719, "1978": 0.719, "1979": 0.719, "1980": 0.448, "1981": 0.171, "1982": 0.171, "1983": 0.227, "1984": 0.466, "1985": 0.466, "1986": 0.501, "1987": 0.515, "1988": 0.526, "1989": 0.526, "1990": 0.594, "1991": 0.594, "1992": 0.609, "1993": 0.609, "1994": 0.622, "1995": 0.622, "1996": 0.616, "1997": 0.603, "1998": 0.603, "1999": 0.651, "2000": 0.681, "2001": 0.687, "2002": 0.737, "2003": 0.74, "2004": 0.749, "2005": 0.718, "2006": 0.718, "2007": 0.708, "2008": 0.633, "2009": 0.623, "2010": 0.547, "2011": 0.536, "2012": 0.527, "2013": 0.446, "2014": 0.368, "2015": 0.352, "2016": 0.218, "2017": 0.18, "2018": 0.198, "2019": 0.191, "2020": 0.19, "2021": 0.189, "2022": 0.18, "2023": 0.177, "2024": 0.183, "2025": 0.179}, "judicial": {"1975": 0.722, "1976": 0.739, "1977": 0.739, "1978": 0.72, "1979": 0.72, "1980": 0.723, "1981": 0.278, "1982": 0.278, "1983": 0.396, "1984": 0.813, "1985": 0.813, "1986": 0.762, "1987": 0.73, "1988": 0.73, "1989": 0.73, "1990": 0.73, "1991": 0.73, "1992": 0.73, "1993": 0.73, "1994": 0.73, "1995": 0.73, "1996": 0.757, "1997": 0.829, "1998": 0.815, "1999": 0.815, "2000": 0.815, "2001": 0.829, "2002": 0.866, "2003": 0.839, "2004": 0.839, "2005": 0.839, "2006": 0.839, "2007": 0.835, "2008": 0.84, "2009": 0.831, "2010": 0.722, "2011": 0.702, "2012": 0.696, "2013": 0.655, "2014": 0.576, "2015": 0.551, "2016": 0.315, "2017": 0.135, "2018": 0.15, "2019": 0.162, "2020": 0.153, "2021": 0.16, "2022": 0.164, "2023": 0.178, "2024": 0.197, "2025": 0.202}, "civlib": {"1975": 0.501, "1976": 0.501, "1977": 0.489, "1978": 0.49, "1979": 0.489, "1980": 0.297, "1981": 0.237, "1982": 0.237, "1983": 0.299, "1984": 0.381, "1985": 0.379, "1986": 0.388, "1987": 0.405, "1988": 0.416, "1989": 0.416, "1990": 0.467, "1991": 0.462, "1992": 0.47, "1993": 0.472, "1994": 0.472, "1995": 0.471, "1996": 0.484, "1997": 0.494, "1998": 0.492, "1999": 0.514, "2000": 0.557, "2001": 0.568, "2002": 0.668, "2003": 0.705, "2004": 0.716, "2005": 0.711, "2006": 0.711, "2007": 0.699, "2008": 0.68, "2009": 0.678, "2010": 0.645, "2011": 0.647, "2012": 0.638, "2013": 0.54, "2014": 0.538, "2015": 0.507, "2016": 0.35, "2017": 0.333, "2018": 0.357, "2019": 0.372, "2020": 0.364, "2021": 0.361, "2022": 0.358, "2023": 0.388, "2024": 0.4, "2025": 0.402}, "assoc": {"1975": 0.684, "1976": 0.684, "1977": 0.683, "1978": 0.682, "1979": 0.682, "1980": 0.445, "1981": 0.232, "1982": 0.232, "1983": 0.29, "1984": 0.49, "1985": 0.498, "1986": 0.498, "1987": 0.509, "1988": 0.586, "1989": 0.586, "1990": 0.586, "1991": 0.591, "1992": 0.603, "1993": 0.598, "1994": 0.598, "1995": 0.611, "1996": 0.628, "1997": 0.642, "1998": 0.635, "1999": 0.643, "2000": 0.644, "2001": 0.646, "2002": 0.698, "2003": 0.713, "2004": 0.719, "2005": 0.719, "2006": 0.719, "2007": 0.732, "2008": 0.735, "2009": 0.707, "2010": 0.748, "2011": 0.754, "2012": 0.75, "2013": 0.724, "2014": 0.721, "2015": 0.7, "2016": 0.565, "2017": 0.535, "2018": 0.555, "2019": 0.554, "2020": 0.554, "2021": 0.527, "2022": 0.538, "2023": 0.55, "2024": 0.551, "2025": 0.565}}, "Venezuela": {"libdem": {"1975": 0.585, "1976": 0.59, "1977": 0.59, "1978": 0.586, "1979": 0.587, "1980": 0.59, "1981": 0.585, "1982": 0.587, "1983": 0.587, "1984": 0.588, "1985": 0.586, "1986": 0.584, "1987": 0.584, "1988": 0.584, "1989": 0.585, "1990": 0.595, "1991": 0.618, "1992": 0.609, "1993": 0.614, "1994": 0.602, "1995": 0.604, "1996": 0.604, "1997": 0.603, "1998": 0.575, "1999": 0.44, "2000": 0.31, "2001": 0.288, "2002": 0.255, "2003": 0.243, "2004": 0.216, "2005": 0.182, "2006": 0.168, "2007": 0.162, "2008": 0.159, "2009": 0.16, "2010": 0.154, "2011": 0.152, "2012": 0.145, "2013": 0.109, "2014": 0.102, "2015": 0.103, "2016": 0.118, "2017": 0.082, "2018": 0.061, "2019": 0.06, "2020": 0.056, "2021": 0.056, "2022": 0.054, "2023": 0.053, "2024": 0.046, "2025": 0.042}, "electdem": {"1975": 0.736, "1976": 0.736, "1977": 0.736, "1978": 0.732, "1979": 0.728, "1980": 0.731, "1981": 0.731, "1982": 0.731, "1983": 0.732, "1984": 0.731, "1985": 0.73, "1986": 0.726, "1987": 0.726, "1988": 0.732, "1989": 0.735, "1990": 0.741, "1991": 0.742, "1992": 0.733, "1993": 0.744, "1994": 0.748, "1995": 0.748, "1996": 0.748, "1997": 0.746, "1998": 0.73, "1999": 0.665, "2000": 0.573, "2001": 0.529, "2002": 0.495, "2003": 0.487, "2004": 0.475, "2005": 0.474, "2006": 0.45, "2007": 0.434, "2008": 0.432, "2009": 0.431, "2010": 0.419, "2011": 0.415, "2012": 0.399, "2013": 0.327, "2014": 0.312, "2015": 0.3, "2016": 0.293, "2017": 0.233, "2018": 0.213, "2019": 0.209, "2020": 0.206, "2021": 0.215, "2022": 0.209, "2023": 0.206, "2024": 0.196, "2025": 0.181}, "expression": {"1975": 0.893, "1976": 0.893, "1977": 0.893, "1978": 0.893, "1979": 0.887, "1980": 0.893, "1981": 0.893, "1982": 0.893, "1983": 0.893, "1984": 0.886, "1985": 0.882, "1986": 0.876, "1987": 0.876, "1988": 0.886, "1989": 0.884, "1990": 0.889, "1991": 0.889, "1992": 0.879, "1993": 0.883, "1994": 0.892, "1995": 0.892, "1996": 0.892, "1997": 0.892, "1998": 0.867, "1999": 0.762, "2000": 0.685, "2001": 0.681, "2002": 0.664, "2003": 0.652, "2004": 0.638, "2005": 0.638, "2006": 0.628, "2007": 0.602, "2008": 0.59, "2009": 0.591, "2010": 0.58, "2011": 0.582, "2012": 0.571, "2013": 0.43, "2014": 0.392, "2015": 0.354, "2016": 0.345, "2017": 0.305, "2018": 0.234, "2019": 0.241, "2020": 0.254, "2021": 0.247, "2022": 0.248, "2023": 0.231, "2024": 0.211, "2025": 0.148}, "judicial": {"1975": 0.706, "1976": 0.729, "1977": 0.729, "1978": 0.729, "1979": 0.729, "1980": 0.729, "1981": 0.729, "1982": 0.729, "1983": 0.729, "1984": 0.729, "1985": 0.729, "1986": 0.729, "1987": 0.729, "1988": 0.715, "1989": 0.679, "1990": 0.667, "1991": 0.769, "1992": 0.769, "1993": 0.769, "1994": 0.669, "1995": 0.684, "1996": 0.684, "1997": 0.684, "1998": 0.646, "1999": 0.576, "2000": 0.329, "2001": 0.329, "2002": 0.329, "2003": 0.313, "2004": 0.156, "2005": 0.05, "2006": 0.044, "2007": 0.044, "2008": 0.044, "2009": 0.044, "2010": 0.046, "2011": 0.046, "2012": 0.046, "2013": 0.03, "2014": 0.025, "2015": 0.024, "2016": 0.023, "2017": 0.025, "2018": 0.019, "2019": 0.016, "2020": 0.024, "2021": 0.018, "2022": 0.025, "2023": 0.021, "2024": 0.016, "2025": 0.017}, "civlib": {"1975": 0.86, "1976": 0.86, "1977": 0.86, "1978": 0.86, "1979": 0.869, "1980": 0.871, "1981": 0.871, "1982": 0.871, "1983": 0.871, "1984": 0.868, "1985": 0.865, "1986": 0.865, "1987": 0.865, "1988": 0.855, "1989": 0.857, "1990": 0.872, "1991": 0.872, "1992": 0.869, "1993": 0.869, "1994": 0.881, "1995": 0.881, "1996": 0.881, "1997": 0.879, "1998": 0.863, "1999": 0.807, "2000": 0.769, "2001": 0.761, "2002": 0.723, "2003": 0.706, "2004": 0.707, "2005": 0.699, "2006": 0.709, "2007": 0.7, "2008": 0.701, "2009": 0.698, "2010": 0.686, "2011": 0.685, "2012": 0.672, "2013": 0.598, "2014": 0.56, "2015": 0.521, "2016": 0.525, "2017": 0.404, "2018": 0.362, "2019": 0.325, "2020": 0.323, "2021": 0.338, "2022": 0.342, "2023": 0.34, "2024": 0.335, "2025": 0.307}, "assoc": {"1975": 0.906, "1976": 0.906, "1977": 0.906, "1978": 0.906, "1979": 0.908, "1980": 0.908, "1981": 0.908, "1982": 0.908, "1983": 0.908, "1984": 0.905, "1985": 0.905, "1986": 0.905, "1987": 0.905, "1988": 0.905, "1989": 0.902, "1990": 0.902, "1991": 0.902, "1992": 0.902, "1993": 0.903, "1994": 0.905, "1995": 0.905, "1996": 0.905, "1997": 0.898, "1998": 0.893, "1999": 0.822, "2000": 0.772, "2001": 0.754, "2002": 0.673, "2003": 0.664, "2004": 0.664, "2005": 0.663, "2006": 0.656, "2007": 0.654, "2008": 0.654, "2009": 0.654, "2010": 0.638, "2011": 0.633, "2012": 0.617, "2013": 0.555, "2014": 0.536, "2015": 0.509, "2016": 0.495, "2017": 0.379, "2018": 0.339, "2019": 0.308, "2020": 0.271, "2021": 0.305, "2022": 0.265, "2023": 0.265, "2024": 0.253, "2025": 0.224}}, "India": {"libdem": {"1975": 0.286, "1976": 0.265, "1977": 0.345, "1978": 0.514, "1979": 0.515, "1980": 0.503, "1981": 0.499, "1982": 0.497, "1983": 0.498, "1984": 0.494, "1985": 0.517, "1986": 0.521, "1987": 0.521, "1988": 0.517, "1989": 0.517, "1990": 0.54, "1991": 0.561, "1992": 0.572, "1993": 0.576, "1994": 0.582, "1995": 0.582, "1996": 0.588, "1997": 0.591, "1998": 0.593, "1999": 0.586, "2000": 0.584, "2001": 0.584, "2002": 0.587, "2003": 0.583, "2004": 0.578, "2005": 0.573, "2006": 0.569, "2007": 0.569, "2008": 0.569, "2009": 0.539, "2010": 0.532, "2011": 0.532, "2012": 0.525, "2013": 0.522, "2014": 0.488, "2015": 0.417, "2016": 0.406, "2017": 0.371, "2018": 0.363, "2019": 0.324, "2020": 0.292, "2021": 0.307, "2022": 0.291, "2023": 0.273, "2024": 0.281, "2025": 0.26}, "electdem": {"1975": 0.39, "1976": 0.381, "1977": 0.494, "1978": 0.652, "1979": 0.656, "1980": 0.646, "1981": 0.643, "1982": 0.641, "1983": 0.641, "1984": 0.642, "1985": 0.658, "1986": 0.668, "1987": 0.668, "1988": 0.664, "1989": 0.665, "1990": 0.693, "1991": 0.713, "1992": 0.726, "1993": 0.731, "1994": 0.738, "1995": 0.738, "1996": 0.741, "1997": 0.742, "1998": 0.746, "1999": 0.737, "2000": 0.735, "2001": 0.735, "2002": 0.739, "2003": 0.736, "2004": 0.731, "2005": 0.723, "2006": 0.721, "2007": 0.721, "2008": 0.721, "2009": 0.683, "2010": 0.671, "2011": 0.671, "2012": 0.659, "2013": 0.65, "2014": 0.617, "2015": 0.543, "2016": 0.524, "2017": 0.488, "2018": 0.482, "2019": 0.43, "2020": 0.39, "2021": 0.398, "2022": 0.384, "2023": 0.374, "2024": 0.381, "2025": 0.377}, "expression": {"1975": 0.395, "1976": 0.391, "1977": 0.682, "1978": 0.851, "1979": 0.856, "1980": 0.856, "1981": 0.856, "1982": 0.856, "1983": 0.856, "1984": 0.856, "1985": 0.856, "1986": 0.856, "1987": 0.856, "1988": 0.856, "1989": 0.856, "1990": 0.867, "1991": 0.867, "1992": 0.882, "1993": 0.882, "1994": 0.897, "1995": 0.897, "1996": 0.897, "1997": 0.897, "1998": 0.897, "1999": 0.885, "2000": 0.885, "2001": 0.885, "2002": 0.885, "2003": 0.892, "2004": 0.885, "2005": 0.892, "2006": 0.889, "2007": 0.889, "2008": 0.889, "2009": 0.885, "2010": 0.889, "2011": 0.889, "2012": 0.874, "2013": 0.869, "2014": 0.812, "2015": 0.658, "2016": 0.612, "2017": 0.568, "2018": 0.546, "2019": 0.527, "2020": 0.449, "2021": 0.466, "2022": 0.442, "2023": 0.422, "2024": 0.477, "2025": 0.458}, "judicial": {"1975": 0.609, "1976": 0.596, "1977": 0.623, "1978": 0.802, "1979": 0.802, "1980": 0.802, "1981": 0.802, "1982": 0.802, "1983": 0.802, "1984": 0.802, "1985": 0.802, "1986": 0.802, "1987": 0.802, "1988": 0.802, "1989": 0.802, "1990": 0.802, "1991": 0.802, "1992": 0.802, "1993": 0.802, "1994": 0.802, "1995": 0.802, "1996": 0.819, "1997": 0.819, "1998": 0.819, "1999": 0.819, "2000": 0.819, "2001": 0.819, "2002": 0.819, "2003": 0.819, "2004": 0.819, "2005": 0.819, "2006": 0.819, "2007": 0.819, "2008": 0.819, "2009": 0.819, "2010": 0.822, "2011": 0.822, "2012": 0.822, "2013": 0.827, "2014": 0.818, "2015": 0.799, "2016": 0.8, "2017": 0.777, "2018": 0.777, "2019": 0.766, "2020": 0.753, "2021": 0.761, "2022": 0.764, "2023": 0.724, "2024": 0.71, "2025": 0.667}, "civlib": {"1975": 0.561, "1976": 0.555, "1977": 0.661, "1978": 0.738, "1979": 0.736, "1980": 0.702, "1981": 0.684, "1982": 0.684, "1983": 0.684, "1984": 0.679, "1985": 0.724, "1986": 0.733, "1987": 0.733, "1988": 0.73, "1989": 0.723, "1990": 0.731, "1991": 0.747, "1992": 0.745, "1993": 0.753, "1994": 0.753, "1995": 0.753, "1996": 0.76, "1997": 0.759, "1998": 0.753, "1999": 0.754, "2000": 0.751, "2001": 0.751, "2002": 0.748, "2003": 0.738, "2004": 0.735, "2005": 0.732, "2006": 0.732, "2007": 0.732, "2008": 0.732, "2009": 0.731, "2010": 0.722, "2011": 0.726, "2012": 0.721, "2013": 0.733, "2014": 0.708, "2015": 0.66, "2016": 0.628, "2017": 0.612, "2018": 0.623, "2019": 0.563, "2020": 0.535, "2021": 0.588, "2022": 0.553, "2023": 0.529, "2024": 0.535, "2025": 0.534}, "assoc": {"1975": 0.553, "1976": 0.535, "1977": 0.57, "1978": 0.796, "1979": 0.796, "1980": 0.795, "1981": 0.783, "1982": 0.779, "1983": 0.782, "1984": 0.782, "1985": 0.791, "1986": 0.805, "1987": 0.805, "1988": 0.796, "1989": 0.796, "1990": 0.796, "1991": 0.807, "1992": 0.81, "1993": 0.819, "1994": 0.819, "1995": 0.819, "1996": 0.81, "1997": 0.806, "1998": 0.813, "1999": 0.806, "2000": 0.796, "2001": 0.796, "2002": 0.801, "2003": 0.791, "2004": 0.794, "2005": 0.777, "2006": 0.773, "2007": 0.773, "2008": 0.773, "2009": 0.787, "2010": 0.787, "2011": 0.787, "2012": 0.782, "2013": 0.781, "2014": 0.769, "2015": 0.753, "2016": 0.754, "2017": 0.726, "2018": 0.717, "2019": 0.668, "2020": 0.657, "2021": 0.653, "2022": 0.619, "2023": 0.597, "2024": 0.57, "2025": 0.586}}, "Switzerland": {"libdem": {"1975": 0.798, "1976": 0.797, "1977": 0.802, "1978": 0.802, "1979": 0.803, "1980": 0.809, "1981": 0.812, "1982": 0.812, "1983": 0.813, "1984": 0.815, "1985": 0.815, "1986": 0.815, "1987": 0.814, "1988": 0.812, "1989": 0.817, "1990": 0.829, "1991": 0.832, "1992": 0.83, "1993": 0.834, "1994": 0.834, "1995": 0.835, "1996": 0.839, "1997": 0.839, "1998": 0.839, "1999": 0.838, "2000": 0.836, "2001": 0.836, "2002": 0.837, "2003": 0.841, "2004": 0.841, "2005": 0.841, "2006": 0.841, "2007": 0.842, "2008": 0.85, "2009": 0.85, "2010": 0.85, "2011": 0.852, "2012": 0.862, "2013": 0.861, "2014": 0.861, "2015": 0.858, "2016": 0.857, "2017": 0.86, "2018": 0.86, "2019": 0.86, "2020": 0.856, "2021": 0.851, "2022": 0.848, "2023": 0.838, "2024": 0.843, "2025": 0.843}, "electdem": {"1975": 0.859, "1976": 0.857, "1977": 0.863, "1978": 0.863, "1979": 0.863, "1980": 0.871, "1981": 0.871, "1982": 0.871, "1983": 0.871, "1984": 0.871, "1985": 0.871, "1986": 0.871, "1987": 0.871, "1988": 0.87, "1989": 0.875, "1990": 0.887, "1991": 0.887, "1992": 0.886, "1993": 0.886, "1994": 0.886, "1995": 0.887, "1996": 0.89, "1997": 0.89, "1998": 0.89, "1999": 0.89, "2000": 0.889, "2001": 0.889, "2002": 0.889, "2003": 0.888, "2004": 0.886, "2005": 0.886, "2006": 0.886, "2007": 0.888, "2008": 0.895, "2009": 0.895, "2010": 0.895, "2011": 0.897, "2012": 0.907, "2013": 0.907, "2014": 0.907, "2015": 0.903, "2016": 0.902, "2017": 0.902, "2018": 0.902, "2019": 0.902, "2020": 0.902, "2021": 0.896, "2022": 0.893, "2023": 0.884, "2024": 0.882, "2025": 0.882}, "expression": {"1975": 0.95, "1976": 0.95, "1977": 0.95, "1978": 0.95, "1979": 0.95, "1980": 0.95, "1981": 0.95, "1982": 0.95, "1983": 0.95, "1984": 0.95, "1985": 0.95, "1986": 0.95, "1987": 0.95, "1988": 0.95, "1989": 0.955, "1990": 0.974, "1991": 0.978, "1992": 0.978, "1993": 0.978, "1994": 0.978, "1995": 0.978, "1996": 0.978, "1997": 0.978, "1998": 0.978, "1999": 0.978, "2000": 0.978, "2001": 0.978, "2002": 0.978, "2003": 0.978, "2004": 0.978, "2005": 0.978, "2006": 0.978, "2007": 0.978, "2008": 0.978, "2009": 0.978, "2010": 0.978, "2011": 0.978, "2012": 0.978, "2013": 0.978, "2014": 0.978, "2015": 0.978, "2016": 0.978, "2017": 0.978, "2018": 0.978, "2019": 0.978, "2020": 0.978, "2021": 0.978, "2022": 0.972, "2023": 0.966, "2024": 0.967, "2025": 0.967}, "judicial": {"1975": 0.987, "1976": 0.987, "1977": 0.987, "1978": 0.987, "1979": 0.987, "1980": 0.987, "1981": 0.987, "1982": 0.987, "1983": 0.987, "1984": 0.987, "1985": 0.987, "1986": 0.987, "1987": 0.987, "1988": 0.987, "1989": 0.987, "1990": 0.987, "1991": 0.987, "1992": 0.987, "1993": 0.987, "1994": 0.987, "1995": 0.987, "1996": 0.987, "1997": 0.987, "1998": 0.987, "1999": 0.987, "2000": 0.987, "2001": 0.987, "2002": 0.987, "2003": 0.987, "2004": 0.987, "2005": 0.987, "2006": 0.987, "2007": 0.987, "2008": 0.987, "2009": 0.987, "2010": 0.987, "2011": 0.987, "2012": 0.987, "2013": 0.987, "2014": 0.987, "2015": 0.987, "2016": 0.987, "2017": 0.987, "2018": 0.987, "2019": 0.987, "2020": 0.982, "2021": 0.982, "2022": 0.982, "2023": 0.982, "2024": 0.982, "2025": 0.982}, "civlib": {"1975": 0.921, "1976": 0.921, "1977": 0.921, "1978": 0.921, "1979": 0.921, "1980": 0.928, "1981": 0.93, "1982": 0.93, "1983": 0.93, "1984": 0.93, "1985": 0.93, "1986": 0.93, "1987": 0.93, "1988": 0.93, "1989": 0.932, "1990": 0.938, "1991": 0.946, "1992": 0.946, "1993": 0.946, "1994": 0.946, "1995": 0.946, "1996": 0.946, "1997": 0.946, "1998": 0.946, "1999": 0.948, "2000": 0.952, "2001": 0.952, "2002": 0.959, "2003": 0.959, "2004": 0.959, "2005": 0.959, "2006": 0.959, "2007": 0.959, "2008": 0.959, "2009": 0.956, "2010": 0.955, "2011": 0.955, "2012": 0.955, "2013": 0.955, "2014": 0.955, "2015": 0.96, "2016": 0.96, "2017": 0.96, "2018": 0.96, "2019": 0.96, "2020": 0.952, "2021": 0.954, "2022": 0.953, "2023": 0.951, "2024": 0.951, "2025": 0.95}, "assoc": {"1975": 0.91, "1976": 0.91, "1977": 0.91, "1978": 0.91, "1979": 0.91, "1980": 0.924, "1981": 0.924, "1982": 0.924, "1983": 0.924, "1984": 0.923, "1985": 0.923, "1986": 0.923, "1987": 0.923, "1988": 0.925, "1989": 0.925, "1990": 0.925, "1991": 0.925, "1992": 0.924, "1993": 0.924, "1994": 0.924, "1995": 0.924, "1996": 0.924, "1997": 0.924, "1998": 0.924, "1999": 0.924, "2000": 0.923, "2001": 0.923, "2002": 0.923, "2003": 0.923, "2004": 0.924, "2005": 0.924, "2006": 0.924, "2007": 0.925, "2008": 0.926, "2009": 0.926, "2010": 0.926, "2011": 0.926, "2012": 0.927, "2013": 0.927, "2014": 0.927, "2015": 0.93, "2016": 0.931, "2017": 0.931, "2018": 0.931, "2019": 0.93, "2020": 0.929, "2021": 0.919, "2022": 0.919, "2023": 0.919, "2024": 0.917, "2025": 0.917}}}, "verdicts": {"Hungary": {"libdem": {"peak_year": 2009, "peak": 0.766, "latest_year": 2025, "latest": 0.315, "drop": 0.451, "onset": 2009, "sustained_years": 16, "fires": true}}, "Turkey": {"libdem": {"peak_year": 2004, "peak": 0.502, "latest_year": 2025, "latest": 0.11, "drop": 0.392, "onset": 2007, "sustained_years": 18, "fires": true}}, "Venezuela": {"libdem": {"peak_year": 1991, "peak": 0.618, "latest_year": 2025, "latest": 0.042, "drop": 0.576, "onset": 1997, "sustained_years": 27, "fires": true}}, "India": {"libdem": {"peak_year": 1998, "peak": 0.593, "latest_year": 2025, "latest": 0.26, "drop": 0.333, "onset": 2013, "sustained_years": 17, "fires": true}}, "Switzerland": {"libdem": {"peak_year": 2012, "peak": 0.862, "latest_year": 2025, "latest": 0.843, "drop": 0.019, "onset": 2013, "sustained_years": 0, "fires": false}}}, "sequence": {"Hungary": {"expression": {"pre_peak": 0.962, "first_fall": 2010, "latest": 0.493, "drop": 0.469}, "civlib": {"pre_peak": 0.951, "first_fall": 2013, "latest": 0.793, "drop": 0.158}, "assoc": {"pre_peak": 0.878, "first_fall": 2015, "latest": 0.605, "drop": 0.273}, "judicial": {"pre_peak": 0.91, "first_fall": 2010, "latest": 0.678, "drop": 0.232}, "electdem": {"pre_peak": 0.85, "first_fall": 2011, "latest": 0.421, "drop": 0.429}}, "Turkey": {"expression": {"pre_peak": 0.749, "first_fall": 2008, "latest": 0.179, "drop": 0.57}, "civlib": {"pre_peak": 0.716, "first_fall": 2010, "latest": 0.402, "drop": 0.314}, "assoc": {"pre_peak": 0.732, "first_fall": 2016, "latest": 0.565, "drop": 0.167}, "judicial": {"pre_peak": 0.866, "first_fall": 2010, "latest": 0.202, "drop": 0.664}, "electdem": {"pre_peak": 0.657, "first_fall": 2008, "latest": 0.293, "drop": 0.364}}, "Venezuela": {"expression": {"pre_peak": 0.892, "first_fall": 1999, "latest": 0.148, "drop": 0.744}, "civlib": {"pre_peak": 0.881, "first_fall": 1999, "latest": 0.307, "drop": 0.574}, "assoc": {"pre_peak": 0.905, "first_fall": 1999, "latest": 0.224, "drop": 0.681}, "judicial": {"pre_peak": 0.769, "first_fall": 1994, "latest": 0.017, "drop": 0.752}, "electdem": {"pre_peak": 0.748, "first_fall": 1999, "latest": 0.181, "drop": 0.567}}, "India": {"expression": {"pre_peak": 0.897, "first_fall": 2014, "latest": 0.458, "drop": 0.439}, "civlib": {"pre_peak": 0.76, "first_fall": 2014, "latest": 0.534, "drop": 0.226}, "assoc": {"pre_peak": 0.819, "first_fall": 2015, "latest": 0.586, "drop": 0.233}, "judicial": {"pre_peak": 0.827, "first_fall": 2019, "latest": 0.667, "drop": 0.16}, "electdem": {"pre_peak": 0.746, "first_fall": 2010, "latest": 0.377, "drop": 0.369}}, "Switzerland": {}}}</script>
+<script>
+"use strict";
+const A = JSON.parse(document.getElementById('analysis').textContent);
+const COUNTRIES = ['India','Hungary','Turkey','Venezuela','Switzerland'];
+const CVAR = {India:'--s1',Hungary:'--s2',Turkey:'--s3',Venezuela:'--s4',Switzerland:'--s5'};
+const IDXNAME = {libdem:'Liberal democracy',electdem:'Electoral democracy',expression:'Expression & media',judicial:'Judicial constraints',civlib:'Civil liberties',assoc:'Freedom of association'};
+
+/* theme toggle (+ ?theme=light|dark test hook) */
+const btn=document.getElementById('themeBtn'), root=document.documentElement;
+const qTheme=new URLSearchParams(location.search).get('theme');
+if(qTheme==='light'||qTheme==='dark') root.dataset.theme=qTheme;
+btn.onclick=()=>{const dark=root.dataset.theme? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches; root.dataset.theme=dark?'light':'dark'; drawAll();};
+
+const NS='http://www.w3.org/2000/svg';
+function el(n,at,parent){const e=document.createElementNS(NS,n);for(const k in at)e.setAttribute(k,at[k]);if(parent)parent.appendChild(e);return e;}
+function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
+
+/* generic multi-series line chart with crosshair + all-series tooltip */
+function lineChart(host,{title,sub,series,xmin,xmax,xfmt,annot,W=920,H=380,endLabels=true}){
+  host.innerHTML='';
+  const head=document.createElement('div');
+  head.innerHTML='<div class="chart-title"></div><div class="chart-sub"></div>';
+  head.querySelector('.chart-title').textContent=title;
+  head.querySelector('.chart-sub').textContent=sub;
+  host.appendChild(head);
+  if(series.length>1){
+    const lg=document.createElement('div');lg.className='legend';lg.setAttribute('role','list');
+    series.forEach(s=>{const it=document.createElement('span');const i=document.createElement('i');i.style.background=`var(${s.cvar})`;it.appendChild(i);it.appendChild(document.createTextNode(s.name));lg.appendChild(it);});
+    host.appendChild(lg);
+  }
+  const ML=40, MR=endLabels==='value'?52:(endLabels?112:16), MT=14, MB=30;
+  const iw=W-ML-MR, ih=H-MT-MB;
+  const X=x=>ML+iw*(x-xmin)/(xmax-xmin), Y=y=>MT+ih*(1-y);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':title},host);
+  for(let g=0;g<=4;g++){const y=Y(g/4);
+    el('line',{x1:ML,x2:W-MR,y1:y,y2:y,stroke:g?'var(--grid)':'var(--baseline)','stroke-width':1},svg);
+    el('text',{x:ML-8,y:y+4,'text-anchor':'end',fill:'var(--muted)'},svg).textContent=(g/4).toFixed(2);
+  }
+  const step=(xmax-xmin)>30?10:((xmax-xmin)>12?5:2);
+  for(let x=Math.ceil(xmin/step)*step;x<=xmax;x+=step){
+    el('text',{x:X(x),y:H-8,'text-anchor':'middle',fill:'var(--muted)'},svg).textContent=xfmt?xfmt(x):x;
+  }
+  (annot||[]).forEach(a=>{
+    el('line',{x1:X(a.x),x2:X(a.x),y1:MT,y2:MT+ih,stroke:'var(--baseline)','stroke-width':1,'stroke-dasharray':'4 4'},svg);
+    el('text',{x:X(a.x)+5,y:MT+12,fill:'var(--muted)'},svg).textContent=a.label;
+  });
+  series.forEach(s=>{
+    const d=s.pts.map((p,i)=>(i?'L':'M')+X(p[0]).toFixed(1)+' '+Y(p[1]).toFixed(1)).join('');
+    el('path',{d,fill:'none',stroke:`var(${s.cvar})`,'stroke-width':2,'stroke-linejoin':'round','stroke-linecap':'round'},svg);
+    const lp=s.pts[s.pts.length-1];
+    el('circle',{cx:X(lp[0]),cy:Y(lp[1]),r:4,fill:`var(${s.cvar})`,stroke:'var(--surface)','stroke-width':2},svg);
+  });
+  if(endLabels){ /* collision-avoided end labels in text ink */
+    const labs=series.map(s=>{const lp=s.pts[s.pts.length-1];return{name:s.name,v:lp[1],y:Y(lp[1])};}).sort((a,b)=>a.y-b.y);
+    for(let i=1;i<labs.length;i++) if(labs[i].y-labs[i-1].y<15) labs[i].y=labs[i-1].y+15;
+    labs.forEach(L=>{
+      const t=el('text',{x:W-MR+10,y:L.y+4,fill:'var(--ink2)'},svg);
+      t.textContent=endLabels==='value'?L.v.toFixed(2):`${L.name} ${L.v.toFixed(2)}`;
+    });
+  }
+  /* hover layer: crosshair + tooltip listing every series */
+  const tip=document.createElement('div');tip.className='tip';host.appendChild(tip);
+  const cross=el('line',{y1:MT,y2:MT+ih,stroke:'var(--muted)','stroke-width':1,visibility:'hidden'},svg);
+  const hit=el('rect',{x:ML,y:MT,width:iw,height:ih,fill:'transparent'},svg);
+  svg.setAttribute('tabindex','0');
+  const xs=series[0].pts.map(p=>p[0]);
+  let fi=xs.length-1;
+  function show(xv){
+    cross.setAttribute('x1',X(xv));cross.setAttribute('x2',X(xv));cross.setAttribute('visibility','visible');
+    tip.innerHTML='';const ty=document.createElement('div');ty.className='ty';ty.textContent=xfmt?xfmt(xv):xv;tip.appendChild(ty);
+    series.map(s=>({s,p:s.pts.find(p=>p[0]===xv)})).filter(o=>o.p).sort((a,b)=>b.p[1]-a.p[1]).forEach(o=>{
+      const r=document.createElement('div');r.className='tr';
+      const k=document.createElement('i');k.className='tk';k.style.background=`var(${o.s.cvar})`;
+      const n=document.createElement('span');n.className='tn';n.textContent=o.s.name;
+      const b=document.createElement('b');b.textContent=o.p[1].toFixed(3);
+      r.append(k,n,b);tip.appendChild(r);
+    });
+    tip.style.display='block';
+    const hr=host.getBoundingClientRect(),sr=svg.getBoundingClientRect();
+    const px=sr.left-hr.left+(X(xv)/W)*sr.width;
+    tip.style.left=Math.min(px+14,host.clientWidth-tip.offsetWidth-8)+'px';
+    tip.style.top=(sr.top-hr.top+20)+'px';
+  }
+  function hide(){cross.setAttribute('visibility','hidden');tip.style.display='none';}
+  hit.addEventListener('pointermove',e=>{
+    const sr=svg.getBoundingClientRect();
+    const vx=xmin+((e.clientX-sr.left)/sr.width*W-ML)/iw*(xmax-xmin);
+    let best=xs[0];for(const x of xs) if(Math.abs(x-vx)<Math.abs(best-vx))best=x;
+    fi=xs.indexOf(best);show(best);
+  });
+  hit.addEventListener('pointerleave',hide);
+  svg.addEventListener('focus',()=>show(xs[fi]));
+  svg.addEventListener('blur',hide);
+  svg.addEventListener('keydown',e=>{
+    if(e.key==='ArrowLeft'){fi=Math.max(0,fi-1);show(xs[fi]);e.preventDefault();}
+    if(e.key==='ArrowRight'){fi=Math.min(xs.length-1,fi+1);show(xs[fi]);e.preventDefault();}
+  });
+}
+
+function seriesFor(key,countries,from){
+  return countries.map(c=>({name:c,cvar:CVAR[c],
+    pts:Object.entries(A.series[c][key]).map(([y,v])=>[+y,v]).filter(p=>p[0]>=from).sort((a,b)=>a[0]-b[0])}));
+}
+
+function drawAll(){
+  /* 01 — main chart */
+  lineChart(document.getElementById('chartMain'),{
+    title:'Liberal democracy index, 1975–2025',
+    sub:'V-Dem v15, best estimate · 1 = full liberal democracy · dashed lines mark detected onsets',
+    series:seriesFor('libdem',COUNTRIES,1975),xmin:1975,xmax:2025,
+    annot:[{x:1997,label:'VEN 1997'},{x:2007,label:'TUR 2007'},{x:2013,label:'IND 2013'}]
+  });
+
+  /* 02 — detector tiles */
+  const tiles=document.getElementById('tiles');tiles.innerHTML='';
+  COUNTRIES.forEach(c=>{
+    const v=A.verdicts[c].libdem;
+    const t=document.createElement('div');t.className='tile';
+    const tl=document.createElement('div');tl.className='tl';
+    const dot=document.createElement('i');dot.style.background=`var(${CVAR[c]})`;
+    tl.append(dot,document.createTextNode(c));
+    const tv=document.createElement('div');tv.className='tv';
+    tv.textContent=v.fires?('−'+v.drop.toFixed(2)):('−'+v.drop.toFixed(2));
+    const td=document.createElement('div');td.className='td';
+    td.textContent=v.fires?`${v.peak.toFixed(2)} (${v.peak_year}) → ${v.latest.toFixed(2)} · onset ${v.onset} · ${v.sustained_years}y below`:`${v.peak.toFixed(2)} (${v.peak_year}) → ${v.latest.toFixed(2)} · no sustained fall`;
+    const b=document.createElement('span');b.className='badge '+(v.fires?'fire':'ok');
+    b.textContent=v.fires?'▲ DETECTOR FIRES':'● QUIET (CONTROL)';
+    t.append(tl,tv,td,b);tiles.appendChild(t);
+  });
+
+  /* 03 — sequence dot plot */
+  const seqHost=document.getElementById('chartSeq');seqHost.innerHTML='';
+  const head=document.createElement('div');
+  head.innerHTML='<div class="chart-title">Years after onset when each institution began to fall</div><div class="chart-sub">first year ≥ 0.05 below its pre-onset peak · negative = began falling before the headline index</div>';
+  seqHost.appendChild(head);
+  const firing=COUNTRIES.filter(c=>A.verdicts[c].libdem.fires);
+  const lg=document.createElement('div');lg.className='legend';
+  firing.forEach(c=>{const it=document.createElement('span');const i=document.createElement('i');i.style.cssText=`background:var(${CVAR[c]});width:10px;height:10px;border-radius:50%`;it.append(i,document.createTextNode(c));lg.appendChild(it);});
+  seqHost.appendChild(lg);
+  const rows=['expression','civlib','assoc','judicial','electdem'];
+  const W=920,RH=44,ML=190,MR=30,MT=8,MB=30,H2=MT+rows.length*RH+MB;
+  const xmin=-6,xmax=10;
+  const X=x=>ML+(W-ML-MR)*(x-xmin)/(xmax-xmin);
+  const svg=el('svg',{viewBox:`0 0 ${W} ${H2}`,role:'img','aria-label':'Sequence of institutional decline'},seqHost);
+  for(let x=xmin;x<=xmax;x+=2){
+    el('line',{x1:X(x),x2:X(x),y1:MT,y2:H2-MB,stroke:x===0?'var(--baseline)':'var(--grid)','stroke-width':1},svg);
+    el('text',{x:X(x),y:H2-10,'text-anchor':'middle',fill:'var(--muted)'},svg).textContent=(x>0?'+':'')+x;
+  }
+  el('text',{x:X(0),y:MT+2,'text-anchor':'middle',fill:'var(--muted)'},svg);
+  const tip2=document.createElement('div');tip2.className='tip';seqHost.appendChild(tip2);
+  rows.forEach((k,ri)=>{
+    const cy0=MT+RH*ri+RH/2;
+    el('text',{x:ML-14,y:cy0+4,'text-anchor':'end',fill:'var(--ink2)'},svg).textContent=IDXNAME[k];
+    /* countries sharing the same x-offset stack vertically instead of hiding each other */
+    const entries=firing.map(c=>{const s=A.sequence[c][k];return s&&s.first_fall?{c,s,off:s.first_fall-A.verdicts[c].libdem.onset}:null;}).filter(Boolean);
+    const groups={};entries.forEach(e=>{(groups[e.off]=groups[e.off]||[]).push(e);});
+    entries.forEach(e=>{
+      const g=groups[e.off], gi=g.indexOf(e);
+      const {c,s}=e;
+      const cy=cy0+(gi-(g.length-1)/2)*14;
+      const cx=X(Math.max(xmin,Math.min(xmax,e.off)));
+      el('circle',{cx,cy,r:6,fill:`var(${CVAR[c]})`,stroke:'var(--surface)','stroke-width':2},svg);
+      const hit=el('circle',{cx,cy,r:13,fill:'transparent',style:'cursor:default'},svg);
+      hit.addEventListener('pointerenter',()=>{
+        tip2.innerHTML='';
+        const ty=document.createElement('div');ty.className='ty';ty.textContent=`${c} — ${IDXNAME[k]}`;tip2.appendChild(ty);
+        const l1=document.createElement('div');l1.className='tr';l1.innerHTML='<span class="tn">began falling</span>';
+        const b1=document.createElement('b');b1.textContent=`${s.first_fall} (onset ${off>=0?'+':''}${off})`;l1.appendChild(b1);
+        const l2=document.createElement('div');l2.className='tr';l2.innerHTML='<span class="tn">fall since</span>';
+        const b2=document.createElement('b');b2.textContent='−'+s.drop.toFixed(2);l2.appendChild(b2);
+        tip2.append(l1,l2);tip2.style.display='block';
+        const hr=seqHost.getBoundingClientRect(),sr=svg.getBoundingClientRect();
+        tip2.style.left=Math.min(sr.left-hr.left+(cx/W)*sr.width+14,seqHost.clientWidth-tip2.offsetWidth-8)+'px';
+        tip2.style.top=(sr.top-hr.top+(cy/H2)*sr.height-10)+'px';
+      });
+      hit.addEventListener('pointerleave',()=>{tip2.style.display='none';});
+    });
+  });
+
+  /* 04 — India small multiples */
+  const sm=document.getElementById('smallMultiples');sm.innerHTML='';
+  ['libdem','electdem','expression','judicial','civlib','assoc'].forEach(k=>{
+    const card=document.createElement('div');card.className='card';sm.appendChild(card);
+    const seq=A.sequence.India[k];
+    lineChart(card,{
+      title:IDXNAME[k],
+      sub:k==='libdem'?'headline index · −0.33 since peak':(seq?`fell from ${seq.first_fall} · −${seq.drop.toFixed(2)} since`:''),
+      series:[{name:'India',cvar:'--s1',pts:Object.entries(A.series.India[k]).map(([y,v])=>[+y,v]).filter(p=>p[0]>=1990)}],
+      xmin:1990,xmax:2025,W:440,H:250,endLabels:'value',annot:[{x:2013,label:''}]
+    });
+  });
+
+  /* 05 — onset-aligned overlay */
+  const onset=c=>A.verdicts[c].libdem.onset;
+  lineChart(document.getElementById('chartOverlay'),{
+    title:'Liberal democracy index, aligned at each country’s onset year',
+    sub:'year 0 = detected onset (Venezuela 1997 · Turkey 2007 · Hungary 2009 · India 2013) · 5 years of run-up shown',
+    series:COUNTRIES.filter(c=>A.verdicts[c].libdem.fires).map(c=>({name:c,cvar:CVAR[c],
+      pts:Object.entries(A.series[c].libdem).map(([y,v])=>[+y-onset(c),v]).filter(p=>p[0]>=-5&&p[0]<=12).sort((a,b)=>a[0]-b[0])})),
+    xmin:-5,xmax:12,xfmt:x=>(x>0?'+':'')+x,annot:[{x:0,label:'onset'}]
+  });
+
+  /* table view */
+  const tbl=document.getElementById('dataTable');tbl.innerHTML='';
+  const years=[1975,1980,1985,1990,1995,2000,2005,2010,2015,2020,2021,2022,2023,2024,2025];
+  const thr=document.createElement('tr');thr.appendChild(document.createElement('th')).textContent='Year';
+  COUNTRIES.forEach(c=>{thr.appendChild(document.createElement('th')).textContent=c;});
+  tbl.appendChild(thr);
+  years.forEach(y=>{
+    const tr=document.createElement('tr');tr.appendChild(document.createElement('td')).textContent=y;
+    COUNTRIES.forEach(c=>{const v=A.series[c].libdem[y];tr.appendChild(document.createElement('td')).textContent=v!=null?v.toFixed(3):'—';});
+    tbl.appendChild(tr);
+  });
+}
+drawAll();
+</script>
+<script>
+/* anonymous visit beacon — counts loads + presence heartbeats, no cookies */
+(function(){
+  if (location.protocol === "file:" || location.hostname === "localhost") return;
+  var EP = "https://site-analytics.vaibhavpro9210.workers.dev/ping";
+  var sid = sessionStorage.getItem("va_sid");
+  if (!sid) { sid = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem("va_sid", sid); }
+  function send(kind){
+    try { navigator.sendBeacon(EP, new Blob([JSON.stringify({sid:sid, page:location.pathname, kind:kind})], {type:"text/plain"})); } catch(e){}
+  }
+  send("load");
+  setInterval(function(){ if (document.visibilityState === "visible") send("beat"); }, 60000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1167 @@
+entity,code,year,electdem_vdem__estimate_best,owid_region
+Hungary,HUN,1789,0.057,Europe
+Hungary,HUN,1790,0.057,Europe
+Hungary,HUN,1791,0.057,Europe
+Hungary,HUN,1792,0.057,Europe
+Hungary,HUN,1793,0.057,Europe
+Hungary,HUN,1794,0.057,Europe
+Hungary,HUN,1795,0.056,Europe
+Hungary,HUN,1796,0.056,Europe
+Hungary,HUN,1797,0.056,Europe
+Hungary,HUN,1798,0.056,Europe
+Hungary,HUN,1799,0.056,Europe
+Hungary,HUN,1800,0.056,Europe
+Hungary,HUN,1801,0.056,Europe
+Hungary,HUN,1802,0.056,Europe
+Hungary,HUN,1803,0.056,Europe
+Hungary,HUN,1804,0.056,Europe
+Hungary,HUN,1805,0.056,Europe
+Hungary,HUN,1806,0.056,Europe
+Hungary,HUN,1807,0.056,Europe
+Hungary,HUN,1808,0.056,Europe
+Hungary,HUN,1809,0.056,Europe
+Hungary,HUN,1810,0.056,Europe
+Hungary,HUN,1811,0.056,Europe
+Hungary,HUN,1812,0.056,Europe
+Hungary,HUN,1813,0.056,Europe
+Hungary,HUN,1814,0.056,Europe
+Hungary,HUN,1815,0.056,Europe
+Hungary,HUN,1816,0.056,Europe
+Hungary,HUN,1817,0.056,Europe
+Hungary,HUN,1818,0.056,Europe
+Hungary,HUN,1819,0.056,Europe
+Hungary,HUN,1820,0.058,Europe
+Hungary,HUN,1821,0.058,Europe
+Hungary,HUN,1822,0.062,Europe
+Hungary,HUN,1823,0.062,Europe
+Hungary,HUN,1824,0.062,Europe
+Hungary,HUN,1825,0.062,Europe
+Hungary,HUN,1826,0.062,Europe
+Hungary,HUN,1827,0.062,Europe
+Hungary,HUN,1828,0.062,Europe
+Hungary,HUN,1829,0.062,Europe
+Hungary,HUN,1830,0.062,Europe
+Hungary,HUN,1831,0.062,Europe
+Hungary,HUN,1832,0.062,Europe
+Hungary,HUN,1833,0.062,Europe
+Hungary,HUN,1834,0.062,Europe
+Hungary,HUN,1835,0.062,Europe
+Hungary,HUN,1836,0.062,Europe
+Hungary,HUN,1837,0.062,Europe
+Hungary,HUN,1838,0.062,Europe
+Hungary,HUN,1839,0.062,Europe
+Hungary,HUN,1840,0.074,Europe
+Hungary,HUN,1841,0.088,Europe
+Hungary,HUN,1842,0.088,Europe
+Hungary,HUN,1843,0.088,Europe
+Hungary,HUN,1844,0.088,Europe
+Hungary,HUN,1845,0.088,Europe
+Hungary,HUN,1846,0.088,Europe
+Hungary,HUN,1847,0.088,Europe
+Hungary,HUN,1848,0.159,Europe
+Hungary,HUN,1849,0.166,Europe
+Hungary,HUN,1850,0.056,Europe
+Hungary,HUN,1851,0.056,Europe
+Hungary,HUN,1852,0.056,Europe
+Hungary,HUN,1853,0.056,Europe
+Hungary,HUN,1854,0.056,Europe
+Hungary,HUN,1855,0.056,Europe
+Hungary,HUN,1856,0.056,Europe
+Hungary,HUN,1857,0.056,Europe
+Hungary,HUN,1858,0.057,Europe
+Hungary,HUN,1859,0.057,Europe
+Hungary,HUN,1860,0.063,Europe
+Hungary,HUN,1861,0.081,Europe
+Hungary,HUN,1862,0.071,Europe
+Hungary,HUN,1863,0.071,Europe
+Hungary,HUN,1864,0.071,Europe
+Hungary,HUN,1865,0.101,Europe
+Hungary,HUN,1866,0.1,Europe
+Hungary,HUN,1867,0.198,Europe
+Hungary,HUN,1868,0.204,Europe
+Hungary,HUN,1869,0.262,Europe
+Hungary,HUN,1870,0.275,Europe
+Hungary,HUN,1871,0.275,Europe
+Hungary,HUN,1872,0.268,Europe
+Hungary,HUN,1873,0.263,Europe
+Hungary,HUN,1874,0.263,Europe
+Hungary,HUN,1875,0.267,Europe
+Hungary,HUN,1876,0.274,Europe
+Hungary,HUN,1877,0.274,Europe
+Hungary,HUN,1878,0.272,Europe
+Hungary,HUN,1879,0.269,Europe
+Hungary,HUN,1880,0.269,Europe
+Hungary,HUN,1881,0.269,Europe
+Hungary,HUN,1882,0.269,Europe
+Hungary,HUN,1883,0.269,Europe
+Hungary,HUN,1884,0.268,Europe
+Hungary,HUN,1885,0.267,Europe
+Hungary,HUN,1886,0.267,Europe
+Hungary,HUN,1887,0.268,Europe
+Hungary,HUN,1888,0.268,Europe
+Hungary,HUN,1889,0.268,Europe
+Hungary,HUN,1890,0.268,Europe
+Hungary,HUN,1891,0.268,Europe
+Hungary,HUN,1892,0.269,Europe
+Hungary,HUN,1893,0.269,Europe
+Hungary,HUN,1894,0.269,Europe
+Hungary,HUN,1895,0.269,Europe
+Hungary,HUN,1896,0.267,Europe
+Hungary,HUN,1897,0.26,Europe
+Hungary,HUN,1898,0.26,Europe
+Hungary,HUN,1899,0.26,Europe
+Hungary,HUN,1900,0.26,Europe
+Hungary,HUN,1901,0.262,Europe
+Hungary,HUN,1902,0.267,Europe
+Hungary,HUN,1903,0.267,Europe
+Hungary,HUN,1904,0.267,Europe
+Hungary,HUN,1905,0.268,Europe
+Hungary,HUN,1906,0.263,Europe
+Hungary,HUN,1907,0.26,Europe
+Hungary,HUN,1908,0.26,Europe
+Hungary,HUN,1909,0.26,Europe
+Hungary,HUN,1910,0.267,Europe
+Hungary,HUN,1911,0.272,Europe
+Hungary,HUN,1912,0.272,Europe
+Hungary,HUN,1913,0.272,Europe
+Hungary,HUN,1914,0.268,Europe
+Hungary,HUN,1915,0.268,Europe
+Hungary,HUN,1916,0.268,Europe
+Hungary,HUN,1917,0.268,Europe
+Hungary,HUN,1918,0.387,Europe
+Hungary,HUN,1919,0.162,Europe
+Hungary,HUN,1920,0.27,Europe
+Hungary,HUN,1921,0.284,Europe
+Hungary,HUN,1922,0.317,Europe
+Hungary,HUN,1923,0.337,Europe
+Hungary,HUN,1924,0.343,Europe
+Hungary,HUN,1925,0.344,Europe
+Hungary,HUN,1926,0.347,Europe
+Hungary,HUN,1927,0.313,Europe
+Hungary,HUN,1928,0.313,Europe
+Hungary,HUN,1929,0.313,Europe
+Hungary,HUN,1930,0.315,Europe
+Hungary,HUN,1931,0.32,Europe
+Hungary,HUN,1932,0.318,Europe
+Hungary,HUN,1933,0.321,Europe
+Hungary,HUN,1934,0.321,Europe
+Hungary,HUN,1935,0.317,Europe
+Hungary,HUN,1936,0.316,Europe
+Hungary,HUN,1937,0.314,Europe
+Hungary,HUN,1938,0.31,Europe
+Hungary,HUN,1939,0.296,Europe
+Hungary,HUN,1940,0.284,Europe
+Hungary,HUN,1941,0.259,Europe
+Hungary,HUN,1942,0.257,Europe
+Hungary,HUN,1943,0.254,Europe
+Hungary,HUN,1944,0.2,Europe
+Hungary,HUN,1945,0.16,Europe
+Hungary,HUN,1946,0.222,Europe
+Hungary,HUN,1947,0.211,Europe
+Hungary,HUN,1948,0.19,Europe
+Hungary,HUN,1949,0.122,Europe
+Hungary,HUN,1950,0.118,Europe
+Hungary,HUN,1951,0.118,Europe
+Hungary,HUN,1952,0.118,Europe
+Hungary,HUN,1953,0.153,Europe
+Hungary,HUN,1954,0.181,Europe
+Hungary,HUN,1955,0.137,Europe
+Hungary,HUN,1956,0.119,Europe
+Hungary,HUN,1957,0.118,Europe
+Hungary,HUN,1958,0.119,Europe
+Hungary,HUN,1959,0.121,Europe
+Hungary,HUN,1960,0.122,Europe
+Hungary,HUN,1961,0.122,Europe
+Hungary,HUN,1962,0.124,Europe
+Hungary,HUN,1963,0.127,Europe
+Hungary,HUN,1964,0.13,Europe
+Hungary,HUN,1965,0.13,Europe
+Hungary,HUN,1966,0.13,Europe
+Hungary,HUN,1967,0.129,Europe
+Hungary,HUN,1968,0.13,Europe
+Hungary,HUN,1969,0.13,Europe
+Hungary,HUN,1970,0.131,Europe
+Hungary,HUN,1971,0.131,Europe
+Hungary,HUN,1972,0.132,Europe
+Hungary,HUN,1973,0.132,Europe
+Hungary,HUN,1974,0.132,Europe
+Hungary,HUN,1975,0.131,Europe
+Hungary,HUN,1976,0.131,Europe
+Hungary,HUN,1977,0.131,Europe
+Hungary,HUN,1978,0.131,Europe
+Hungary,HUN,1979,0.131,Europe
+Hungary,HUN,1980,0.134,Europe
+Hungary,HUN,1981,0.136,Europe
+Hungary,HUN,1982,0.136,Europe
+Hungary,HUN,1983,0.136,Europe
+Hungary,HUN,1984,0.136,Europe
+Hungary,HUN,1985,0.141,Europe
+Hungary,HUN,1986,0.145,Europe
+Hungary,HUN,1987,0.15,Europe
+Hungary,HUN,1988,0.167,Europe
+Hungary,HUN,1989,0.265,Europe
+Hungary,HUN,1990,0.799,Europe
+Hungary,HUN,1991,0.843,Europe
+Hungary,HUN,1992,0.843,Europe
+Hungary,HUN,1993,0.843,Europe
+Hungary,HUN,1994,0.842,Europe
+Hungary,HUN,1995,0.844,Europe
+Hungary,HUN,1996,0.844,Europe
+Hungary,HUN,1997,0.844,Europe
+Hungary,HUN,1998,0.84,Europe
+Hungary,HUN,1999,0.839,Europe
+Hungary,HUN,2000,0.839,Europe
+Hungary,HUN,2001,0.839,Europe
+Hungary,HUN,2002,0.842,Europe
+Hungary,HUN,2003,0.843,Europe
+Hungary,HUN,2004,0.843,Europe
+Hungary,HUN,2005,0.843,Europe
+Hungary,HUN,2006,0.831,Europe
+Hungary,HUN,2007,0.85,Europe
+Hungary,HUN,2008,0.85,Europe
+Hungary,HUN,2009,0.85,Europe
+Hungary,HUN,2010,0.808,Europe
+Hungary,HUN,2011,0.778,Europe
+Hungary,HUN,2012,0.773,Europe
+Hungary,HUN,2013,0.738,Europe
+Hungary,HUN,2014,0.669,Europe
+Hungary,HUN,2015,0.617,Europe
+Hungary,HUN,2016,0.613,Europe
+Hungary,HUN,2017,0.555,Europe
+Hungary,HUN,2018,0.481,Europe
+Hungary,HUN,2019,0.466,Europe
+Hungary,HUN,2020,0.46,Europe
+Hungary,HUN,2021,0.45,Europe
+Hungary,HUN,2022,0.447,Europe
+Hungary,HUN,2023,0.434,Europe
+Hungary,HUN,2024,0.444,Europe
+Hungary,HUN,2025,0.421,Europe
+India,IND,1789,0.053,Asia
+India,IND,1790,0.053,Asia
+India,IND,1791,0.053,Asia
+India,IND,1792,0.053,Asia
+India,IND,1793,0.053,Asia
+India,IND,1794,0.053,Asia
+India,IND,1795,0.053,Asia
+India,IND,1796,0.053,Asia
+India,IND,1797,0.053,Asia
+India,IND,1798,0.053,Asia
+India,IND,1799,0.053,Asia
+India,IND,1800,0.053,Asia
+India,IND,1801,0.053,Asia
+India,IND,1802,0.053,Asia
+India,IND,1803,0.053,Asia
+India,IND,1804,0.053,Asia
+India,IND,1805,0.053,Asia
+India,IND,1806,0.053,Asia
+India,IND,1807,0.053,Asia
+India,IND,1808,0.053,Asia
+India,IND,1809,0.053,Asia
+India,IND,1810,0.053,Asia
+India,IND,1811,0.053,Asia
+India,IND,1812,0.053,Asia
+India,IND,1813,0.053,Asia
+India,IND,1814,0.053,Asia
+India,IND,1815,0.053,Asia
+India,IND,1816,0.053,Asia
+India,IND,1817,0.053,Asia
+India,IND,1818,0.053,Asia
+India,IND,1819,0.053,Asia
+India,IND,1820,0.053,Asia
+India,IND,1821,0.053,Asia
+India,IND,1822,0.053,Asia
+India,IND,1823,0.053,Asia
+India,IND,1824,0.053,Asia
+India,IND,1825,0.053,Asia
+India,IND,1826,0.053,Asia
+India,IND,1827,0.053,Asia
+India,IND,1828,0.053,Asia
+India,IND,1829,0.053,Asia
+India,IND,1830,0.053,Asia
+India,IND,1831,0.053,Asia
+India,IND,1832,0.053,Asia
+India,IND,1833,0.053,Asia
+India,IND,1834,0.053,Asia
+India,IND,1835,0.053,Asia
+India,IND,1836,0.053,Asia
+India,IND,1837,0.053,Asia
+India,IND,1838,0.058,Asia
+India,IND,1839,0.058,Asia
+India,IND,1840,0.058,Asia
+India,IND,1841,0.058,Asia
+India,IND,1842,0.058,Asia
+India,IND,1843,0.058,Asia
+India,IND,1844,0.058,Asia
+India,IND,1845,0.058,Asia
+India,IND,1846,0.058,Asia
+India,IND,1847,0.058,Asia
+India,IND,1848,0.058,Asia
+India,IND,1849,0.058,Asia
+India,IND,1850,0.058,Asia
+India,IND,1851,0.058,Asia
+India,IND,1852,0.058,Asia
+India,IND,1853,0.058,Asia
+India,IND,1854,0.058,Asia
+India,IND,1855,0.058,Asia
+India,IND,1856,0.058,Asia
+India,IND,1857,0.058,Asia
+India,IND,1858,0.054,Asia
+India,IND,1859,0.054,Asia
+India,IND,1860,0.054,Asia
+India,IND,1861,0.054,Asia
+India,IND,1862,0.054,Asia
+India,IND,1863,0.054,Asia
+India,IND,1864,0.054,Asia
+India,IND,1865,0.054,Asia
+India,IND,1866,0.054,Asia
+India,IND,1867,0.054,Asia
+India,IND,1868,0.054,Asia
+India,IND,1869,0.054,Asia
+India,IND,1870,0.054,Asia
+India,IND,1871,0.054,Asia
+India,IND,1872,0.054,Asia
+India,IND,1873,0.054,Asia
+India,IND,1874,0.054,Asia
+India,IND,1875,0.054,Asia
+India,IND,1876,0.057,Asia
+India,IND,1877,0.056,Asia
+India,IND,1878,0.05,Asia
+India,IND,1879,0.05,Asia
+India,IND,1880,0.05,Asia
+India,IND,1881,0.062,Asia
+India,IND,1882,0.064,Asia
+India,IND,1883,0.074,Asia
+India,IND,1884,0.074,Asia
+India,IND,1885,0.074,Asia
+India,IND,1886,0.074,Asia
+India,IND,1887,0.074,Asia
+India,IND,1888,0.074,Asia
+India,IND,1889,0.074,Asia
+India,IND,1890,0.074,Asia
+India,IND,1891,0.074,Asia
+India,IND,1892,0.074,Asia
+India,IND,1893,0.074,Asia
+India,IND,1894,0.074,Asia
+India,IND,1895,0.074,Asia
+India,IND,1896,0.074,Asia
+India,IND,1897,0.074,Asia
+India,IND,1898,0.074,Asia
+India,IND,1899,0.074,Asia
+India,IND,1900,0.076,Asia
+India,IND,1901,0.076,Asia
+India,IND,1902,0.076,Asia
+India,IND,1903,0.076,Asia
+India,IND,1904,0.076,Asia
+India,IND,1905,0.074,Asia
+India,IND,1906,0.075,Asia
+India,IND,1907,0.075,Asia
+India,IND,1908,0.075,Asia
+India,IND,1909,0.075,Asia
+India,IND,1910,0.076,Asia
+India,IND,1911,0.076,Asia
+India,IND,1912,0.076,Asia
+India,IND,1913,0.076,Asia
+India,IND,1914,0.076,Asia
+India,IND,1915,0.076,Asia
+India,IND,1916,0.076,Asia
+India,IND,1917,0.076,Asia
+India,IND,1918,0.076,Asia
+India,IND,1919,0.076,Asia
+India,IND,1920,0.087,Asia
+India,IND,1921,0.139,Asia
+India,IND,1922,0.139,Asia
+India,IND,1923,0.14,Asia
+India,IND,1924,0.144,Asia
+India,IND,1925,0.144,Asia
+India,IND,1926,0.143,Asia
+India,IND,1927,0.138,Asia
+India,IND,1928,0.138,Asia
+India,IND,1929,0.138,Asia
+India,IND,1930,0.137,Asia
+India,IND,1931,0.139,Asia
+India,IND,1932,0.139,Asia
+India,IND,1933,0.139,Asia
+India,IND,1934,0.141,Asia
+India,IND,1935,0.177,Asia
+India,IND,1936,0.176,Asia
+India,IND,1937,0.18,Asia
+India,IND,1938,0.18,Asia
+India,IND,1939,0.18,Asia
+India,IND,1940,0.179,Asia
+India,IND,1941,0.179,Asia
+India,IND,1942,0.179,Asia
+India,IND,1943,0.179,Asia
+India,IND,1944,0.179,Asia
+India,IND,1945,0.197,Asia
+India,IND,1946,0.21,Asia
+India,IND,1947,0.226,Asia
+India,IND,1948,0.185,Asia
+India,IND,1949,0.187,Asia
+India,IND,1950,0.272,Asia
+India,IND,1951,0.312,Asia
+India,IND,1952,0.596,Asia
+India,IND,1953,0.661,Asia
+India,IND,1954,0.661,Asia
+India,IND,1955,0.661,Asia
+India,IND,1956,0.661,Asia
+India,IND,1957,0.668,Asia
+India,IND,1958,0.67,Asia
+India,IND,1959,0.67,Asia
+India,IND,1960,0.67,Asia
+India,IND,1961,0.67,Asia
+India,IND,1962,0.655,Asia
+India,IND,1963,0.653,Asia
+India,IND,1964,0.65,Asia
+India,IND,1965,0.644,Asia
+India,IND,1966,0.645,Asia
+India,IND,1967,0.66,Asia
+India,IND,1968,0.665,Asia
+India,IND,1969,0.665,Asia
+India,IND,1970,0.664,Asia
+India,IND,1971,0.618,Asia
+India,IND,1972,0.612,Asia
+India,IND,1973,0.612,Asia
+India,IND,1974,0.57,Asia
+India,IND,1975,0.39,Asia
+India,IND,1976,0.381,Asia
+India,IND,1977,0.494,Asia
+India,IND,1978,0.652,Asia
+India,IND,1979,0.656,Asia
+India,IND,1980,0.646,Asia
+India,IND,1981,0.643,Asia
+India,IND,1982,0.641,Asia
+India,IND,1983,0.641,Asia
+India,IND,1984,0.642,Asia
+India,IND,1985,0.658,Asia
+India,IND,1986,0.668,Asia
+India,IND,1987,0.668,Asia
+India,IND,1988,0.664,Asia
+India,IND,1989,0.665,Asia
+India,IND,1990,0.693,Asia
+India,IND,1991,0.713,Asia
+India,IND,1992,0.726,Asia
+India,IND,1993,0.731,Asia
+India,IND,1994,0.738,Asia
+India,IND,1995,0.738,Asia
+India,IND,1996,0.741,Asia
+India,IND,1997,0.742,Asia
+India,IND,1998,0.746,Asia
+India,IND,1999,0.737,Asia
+India,IND,2000,0.735,Asia
+India,IND,2001,0.735,Asia
+India,IND,2002,0.739,Asia
+India,IND,2003,0.736,Asia
+India,IND,2004,0.731,Asia
+India,IND,2005,0.723,Asia
+India,IND,2006,0.721,Asia
+India,IND,2007,0.721,Asia
+India,IND,2008,0.721,Asia
+India,IND,2009,0.683,Asia
+India,IND,2010,0.671,Asia
+India,IND,2011,0.671,Asia
+India,IND,2012,0.659,Asia
+India,IND,2013,0.65,Asia
+India,IND,2014,0.617,Asia
+India,IND,2015,0.543,Asia
+India,IND,2016,0.524,Asia
+India,IND,2017,0.488,Asia
+India,IND,2018,0.482,Asia
+India,IND,2019,0.43,Asia
+India,IND,2020,0.39,Asia
+India,IND,2021,0.398,Asia
+India,IND,2022,0.384,Asia
+India,IND,2023,0.374,Asia
+India,IND,2024,0.381,Asia
+India,IND,2025,0.377,Asia
+Switzerland,CHE,1798,0.215,Europe
+Switzerland,CHE,1799,0.215,Europe
+Switzerland,CHE,1800,0.206,Europe
+Switzerland,CHE,1801,0.178,Europe
+Switzerland,CHE,1802,0.185,Europe
+Switzerland,CHE,1803,0.18,Europe
+Switzerland,CHE,1804,0.178,Europe
+Switzerland,CHE,1805,0.178,Europe
+Switzerland,CHE,1806,0.178,Europe
+Switzerland,CHE,1807,0.178,Europe
+Switzerland,CHE,1808,0.178,Europe
+Switzerland,CHE,1809,0.178,Europe
+Switzerland,CHE,1810,0.178,Europe
+Switzerland,CHE,1811,0.178,Europe
+Switzerland,CHE,1812,0.178,Europe
+Switzerland,CHE,1813,0.178,Europe
+Switzerland,CHE,1814,0.178,Europe
+Switzerland,CHE,1815,0.178,Europe
+Switzerland,CHE,1816,0.178,Europe
+Switzerland,CHE,1817,0.178,Europe
+Switzerland,CHE,1818,0.178,Europe
+Switzerland,CHE,1819,0.178,Europe
+Switzerland,CHE,1820,0.178,Europe
+Switzerland,CHE,1821,0.178,Europe
+Switzerland,CHE,1822,0.178,Europe
+Switzerland,CHE,1823,0.178,Europe
+Switzerland,CHE,1824,0.178,Europe
+Switzerland,CHE,1825,0.178,Europe
+Switzerland,CHE,1826,0.178,Europe
+Switzerland,CHE,1827,0.178,Europe
+Switzerland,CHE,1828,0.178,Europe
+Switzerland,CHE,1829,0.178,Europe
+Switzerland,CHE,1830,0.178,Europe
+Switzerland,CHE,1831,0.213,Europe
+Switzerland,CHE,1832,0.213,Europe
+Switzerland,CHE,1833,0.213,Europe
+Switzerland,CHE,1834,0.213,Europe
+Switzerland,CHE,1835,0.213,Europe
+Switzerland,CHE,1836,0.213,Europe
+Switzerland,CHE,1837,0.213,Europe
+Switzerland,CHE,1838,0.213,Europe
+Switzerland,CHE,1839,0.213,Europe
+Switzerland,CHE,1840,0.213,Europe
+Switzerland,CHE,1841,0.213,Europe
+Switzerland,CHE,1842,0.213,Europe
+Switzerland,CHE,1843,0.213,Europe
+Switzerland,CHE,1844,0.213,Europe
+Switzerland,CHE,1845,0.213,Europe
+Switzerland,CHE,1846,0.213,Europe
+Switzerland,CHE,1847,0.213,Europe
+Switzerland,CHE,1848,0.326,Europe
+Switzerland,CHE,1849,0.543,Europe
+Switzerland,CHE,1850,0.543,Europe
+Switzerland,CHE,1851,0.543,Europe
+Switzerland,CHE,1852,0.543,Europe
+Switzerland,CHE,1853,0.543,Europe
+Switzerland,CHE,1854,0.543,Europe
+Switzerland,CHE,1855,0.543,Europe
+Switzerland,CHE,1856,0.543,Europe
+Switzerland,CHE,1857,0.542,Europe
+Switzerland,CHE,1858,0.54,Europe
+Switzerland,CHE,1859,0.54,Europe
+Switzerland,CHE,1860,0.54,Europe
+Switzerland,CHE,1861,0.541,Europe
+Switzerland,CHE,1862,0.541,Europe
+Switzerland,CHE,1863,0.541,Europe
+Switzerland,CHE,1864,0.542,Europe
+Switzerland,CHE,1865,0.542,Europe
+Switzerland,CHE,1866,0.542,Europe
+Switzerland,CHE,1867,0.542,Europe
+Switzerland,CHE,1868,0.542,Europe
+Switzerland,CHE,1869,0.542,Europe
+Switzerland,CHE,1870,0.543,Europe
+Switzerland,CHE,1871,0.543,Europe
+Switzerland,CHE,1872,0.543,Europe
+Switzerland,CHE,1873,0.542,Europe
+Switzerland,CHE,1874,0.579,Europe
+Switzerland,CHE,1875,0.58,Europe
+Switzerland,CHE,1876,0.581,Europe
+Switzerland,CHE,1877,0.581,Europe
+Switzerland,CHE,1878,0.581,Europe
+Switzerland,CHE,1879,0.58,Europe
+Switzerland,CHE,1880,0.58,Europe
+Switzerland,CHE,1881,0.58,Europe
+Switzerland,CHE,1882,0.582,Europe
+Switzerland,CHE,1883,0.582,Europe
+Switzerland,CHE,1884,0.582,Europe
+Switzerland,CHE,1885,0.58,Europe
+Switzerland,CHE,1886,0.58,Europe
+Switzerland,CHE,1887,0.58,Europe
+Switzerland,CHE,1888,0.58,Europe
+Switzerland,CHE,1889,0.58,Europe
+Switzerland,CHE,1890,0.58,Europe
+Switzerland,CHE,1891,0.58,Europe
+Switzerland,CHE,1892,0.58,Europe
+Switzerland,CHE,1893,0.58,Europe
+Switzerland,CHE,1894,0.581,Europe
+Switzerland,CHE,1895,0.581,Europe
+Switzerland,CHE,1896,0.58,Europe
+Switzerland,CHE,1897,0.578,Europe
+Switzerland,CHE,1898,0.578,Europe
+Switzerland,CHE,1899,0.578,Europe
+Switzerland,CHE,1900,0.586,Europe
+Switzerland,CHE,1901,0.586,Europe
+Switzerland,CHE,1902,0.588,Europe
+Switzerland,CHE,1903,0.596,Europe
+Switzerland,CHE,1904,0.596,Europe
+Switzerland,CHE,1905,0.601,Europe
+Switzerland,CHE,1906,0.599,Europe
+Switzerland,CHE,1907,0.599,Europe
+Switzerland,CHE,1908,0.599,Europe
+Switzerland,CHE,1909,0.599,Europe
+Switzerland,CHE,1910,0.599,Europe
+Switzerland,CHE,1911,0.599,Europe
+Switzerland,CHE,1912,0.597,Europe
+Switzerland,CHE,1913,0.597,Europe
+Switzerland,CHE,1914,0.598,Europe
+Switzerland,CHE,1915,0.596,Europe
+Switzerland,CHE,1916,0.596,Europe
+Switzerland,CHE,1917,0.6,Europe
+Switzerland,CHE,1918,0.601,Europe
+Switzerland,CHE,1919,0.6,Europe
+Switzerland,CHE,1920,0.606,Europe
+Switzerland,CHE,1921,0.606,Europe
+Switzerland,CHE,1922,0.606,Europe
+Switzerland,CHE,1923,0.606,Europe
+Switzerland,CHE,1924,0.606,Europe
+Switzerland,CHE,1925,0.606,Europe
+Switzerland,CHE,1926,0.608,Europe
+Switzerland,CHE,1927,0.608,Europe
+Switzerland,CHE,1928,0.607,Europe
+Switzerland,CHE,1929,0.607,Europe
+Switzerland,CHE,1930,0.607,Europe
+Switzerland,CHE,1931,0.607,Europe
+Switzerland,CHE,1932,0.605,Europe
+Switzerland,CHE,1933,0.605,Europe
+Switzerland,CHE,1934,0.605,Europe
+Switzerland,CHE,1935,0.606,Europe
+Switzerland,CHE,1936,0.609,Europe
+Switzerland,CHE,1937,0.609,Europe
+Switzerland,CHE,1938,0.609,Europe
+Switzerland,CHE,1939,0.606,Europe
+Switzerland,CHE,1940,0.598,Europe
+Switzerland,CHE,1941,0.598,Europe
+Switzerland,CHE,1942,0.598,Europe
+Switzerland,CHE,1943,0.597,Europe
+Switzerland,CHE,1944,0.601,Europe
+Switzerland,CHE,1945,0.605,Europe
+Switzerland,CHE,1946,0.617,Europe
+Switzerland,CHE,1947,0.617,Europe
+Switzerland,CHE,1948,0.617,Europe
+Switzerland,CHE,1949,0.617,Europe
+Switzerland,CHE,1950,0.617,Europe
+Switzerland,CHE,1951,0.617,Europe
+Switzerland,CHE,1952,0.617,Europe
+Switzerland,CHE,1953,0.617,Europe
+Switzerland,CHE,1954,0.617,Europe
+Switzerland,CHE,1955,0.617,Europe
+Switzerland,CHE,1956,0.617,Europe
+Switzerland,CHE,1957,0.617,Europe
+Switzerland,CHE,1958,0.617,Europe
+Switzerland,CHE,1959,0.618,Europe
+Switzerland,CHE,1960,0.621,Europe
+Switzerland,CHE,1961,0.621,Europe
+Switzerland,CHE,1962,0.621,Europe
+Switzerland,CHE,1963,0.621,Europe
+Switzerland,CHE,1964,0.621,Europe
+Switzerland,CHE,1965,0.621,Europe
+Switzerland,CHE,1966,0.621,Europe
+Switzerland,CHE,1967,0.623,Europe
+Switzerland,CHE,1968,0.622,Europe
+Switzerland,CHE,1969,0.622,Europe
+Switzerland,CHE,1970,0.624,Europe
+Switzerland,CHE,1971,0.628,Europe
+Switzerland,CHE,1972,0.855,Europe
+Switzerland,CHE,1973,0.855,Europe
+Switzerland,CHE,1974,0.855,Europe
+Switzerland,CHE,1975,0.859,Europe
+Switzerland,CHE,1976,0.857,Europe
+Switzerland,CHE,1977,0.863,Europe
+Switzerland,CHE,1978,0.863,Europe
+Switzerland,CHE,1979,0.863,Europe
+Switzerland,CHE,1980,0.871,Europe
+Switzerland,CHE,1981,0.871,Europe
+Switzerland,CHE,1982,0.871,Europe
+Switzerland,CHE,1983,0.871,Europe
+Switzerland,CHE,1984,0.871,Europe
+Switzerland,CHE,1985,0.871,Europe
+Switzerland,CHE,1986,0.871,Europe
+Switzerland,CHE,1987,0.871,Europe
+Switzerland,CHE,1988,0.87,Europe
+Switzerland,CHE,1989,0.875,Europe
+Switzerland,CHE,1990,0.887,Europe
+Switzerland,CHE,1991,0.887,Europe
+Switzerland,CHE,1992,0.886,Europe
+Switzerland,CHE,1993,0.886,Europe
+Switzerland,CHE,1994,0.886,Europe
+Switzerland,CHE,1995,0.887,Europe
+Switzerland,CHE,1996,0.89,Europe
+Switzerland,CHE,1997,0.89,Europe
+Switzerland,CHE,1998,0.89,Europe
+Switzerland,CHE,1999,0.89,Europe
+Switzerland,CHE,2000,0.889,Europe
+Switzerland,CHE,2001,0.889,Europe
+Switzerland,CHE,2002,0.889,Europe
+Switzerland,CHE,2003,0.888,Europe
+Switzerland,CHE,2004,0.886,Europe
+Switzerland,CHE,2005,0.886,Europe
+Switzerland,CHE,2006,0.886,Europe
+Switzerland,CHE,2007,0.888,Europe
+Switzerland,CHE,2008,0.895,Europe
+Switzerland,CHE,2009,0.895,Europe
+Switzerland,CHE,2010,0.895,Europe
+Switzerland,CHE,2011,0.897,Europe
+Switzerland,CHE,2012,0.907,Europe
+Switzerland,CHE,2013,0.907,Europe
+Switzerland,CHE,2014,0.907,Europe
+Switzerland,CHE,2015,0.903,Europe
+Switzerland,CHE,2016,0.902,Europe
+Switzerland,CHE,2017,0.902,Europe
+Switzerland,CHE,2018,0.902,Europe
+Switzerland,CHE,2019,0.902,Europe
+Switzerland,CHE,2020,0.902,Europe
+Switzerland,CHE,2021,0.896,Europe
+Switzerland,CHE,2022,0.893,Europe
+Switzerland,CHE,2023,0.884,Europe
+Switzerland,CHE,2024,0.882,Europe
+Switzerland,CHE,2025,0.882,Europe
+Turkey,TUR,1789,0.02,Asia
+Turkey,TUR,1790,0.02,Asia
+Turkey,TUR,1791,0.02,Asia
+Turkey,TUR,1792,0.02,Asia
+Turkey,TUR,1793,0.02,Asia
+Turkey,TUR,1794,0.02,Asia
+Turkey,TUR,1795,0.02,Asia
+Turkey,TUR,1796,0.02,Asia
+Turkey,TUR,1797,0.02,Asia
+Turkey,TUR,1798,0.02,Asia
+Turkey,TUR,1799,0.02,Asia
+Turkey,TUR,1800,0.02,Asia
+Turkey,TUR,1801,0.02,Asia
+Turkey,TUR,1802,0.02,Asia
+Turkey,TUR,1803,0.02,Asia
+Turkey,TUR,1804,0.02,Asia
+Turkey,TUR,1805,0.02,Asia
+Turkey,TUR,1806,0.02,Asia
+Turkey,TUR,1807,0.02,Asia
+Turkey,TUR,1808,0.02,Asia
+Turkey,TUR,1809,0.019,Asia
+Turkey,TUR,1810,0.019,Asia
+Turkey,TUR,1811,0.019,Asia
+Turkey,TUR,1812,0.019,Asia
+Turkey,TUR,1813,0.019,Asia
+Turkey,TUR,1814,0.019,Asia
+Turkey,TUR,1815,0.019,Asia
+Turkey,TUR,1816,0.019,Asia
+Turkey,TUR,1817,0.019,Asia
+Turkey,TUR,1818,0.019,Asia
+Turkey,TUR,1819,0.019,Asia
+Turkey,TUR,1820,0.019,Asia
+Turkey,TUR,1821,0.019,Asia
+Turkey,TUR,1822,0.019,Asia
+Turkey,TUR,1823,0.019,Asia
+Turkey,TUR,1824,0.019,Asia
+Turkey,TUR,1825,0.019,Asia
+Turkey,TUR,1826,0.019,Asia
+Turkey,TUR,1827,0.019,Asia
+Turkey,TUR,1828,0.019,Asia
+Turkey,TUR,1829,0.019,Asia
+Turkey,TUR,1830,0.019,Asia
+Turkey,TUR,1831,0.019,Asia
+Turkey,TUR,1832,0.019,Asia
+Turkey,TUR,1833,0.019,Asia
+Turkey,TUR,1834,0.019,Asia
+Turkey,TUR,1835,0.019,Asia
+Turkey,TUR,1836,0.019,Asia
+Turkey,TUR,1837,0.019,Asia
+Turkey,TUR,1838,0.019,Asia
+Turkey,TUR,1839,0.019,Asia
+Turkey,TUR,1840,0.018,Asia
+Turkey,TUR,1841,0.018,Asia
+Turkey,TUR,1842,0.018,Asia
+Turkey,TUR,1843,0.018,Asia
+Turkey,TUR,1844,0.018,Asia
+Turkey,TUR,1845,0.018,Asia
+Turkey,TUR,1846,0.018,Asia
+Turkey,TUR,1847,0.018,Asia
+Turkey,TUR,1848,0.018,Asia
+Turkey,TUR,1849,0.018,Asia
+Turkey,TUR,1850,0.018,Asia
+Turkey,TUR,1851,0.018,Asia
+Turkey,TUR,1852,0.018,Asia
+Turkey,TUR,1853,0.018,Asia
+Turkey,TUR,1854,0.018,Asia
+Turkey,TUR,1855,0.018,Asia
+Turkey,TUR,1856,0.018,Asia
+Turkey,TUR,1857,0.018,Asia
+Turkey,TUR,1858,0.018,Asia
+Turkey,TUR,1859,0.018,Asia
+Turkey,TUR,1860,0.03,Asia
+Turkey,TUR,1861,0.034,Asia
+Turkey,TUR,1862,0.034,Asia
+Turkey,TUR,1863,0.034,Asia
+Turkey,TUR,1864,0.034,Asia
+Turkey,TUR,1865,0.033,Asia
+Turkey,TUR,1866,0.033,Asia
+Turkey,TUR,1867,0.035,Asia
+Turkey,TUR,1868,0.035,Asia
+Turkey,TUR,1869,0.035,Asia
+Turkey,TUR,1870,0.035,Asia
+Turkey,TUR,1871,0.035,Asia
+Turkey,TUR,1872,0.035,Asia
+Turkey,TUR,1873,0.035,Asia
+Turkey,TUR,1874,0.035,Asia
+Turkey,TUR,1875,0.035,Asia
+Turkey,TUR,1876,0.1,Asia
+Turkey,TUR,1877,0.031,Asia
+Turkey,TUR,1878,0.012,Asia
+Turkey,TUR,1879,0.012,Asia
+Turkey,TUR,1880,0.012,Asia
+Turkey,TUR,1881,0.012,Asia
+Turkey,TUR,1882,0.012,Asia
+Turkey,TUR,1883,0.012,Asia
+Turkey,TUR,1884,0.012,Asia
+Turkey,TUR,1885,0.012,Asia
+Turkey,TUR,1886,0.012,Asia
+Turkey,TUR,1887,0.012,Asia
+Turkey,TUR,1888,0.012,Asia
+Turkey,TUR,1889,0.012,Asia
+Turkey,TUR,1890,0.008,Asia
+Turkey,TUR,1891,0.008,Asia
+Turkey,TUR,1892,0.008,Asia
+Turkey,TUR,1893,0.008,Asia
+Turkey,TUR,1894,0.008,Asia
+Turkey,TUR,1895,0.008,Asia
+Turkey,TUR,1896,0.008,Asia
+Turkey,TUR,1897,0.008,Asia
+Turkey,TUR,1898,0.008,Asia
+Turkey,TUR,1899,0.008,Asia
+Turkey,TUR,1900,0.009,Asia
+Turkey,TUR,1901,0.009,Asia
+Turkey,TUR,1902,0.009,Asia
+Turkey,TUR,1903,0.009,Asia
+Turkey,TUR,1904,0.009,Asia
+Turkey,TUR,1905,0.009,Asia
+Turkey,TUR,1906,0.009,Asia
+Turkey,TUR,1907,0.009,Asia
+Turkey,TUR,1908,0.062,Asia
+Turkey,TUR,1909,0.153,Asia
+Turkey,TUR,1910,0.141,Asia
+Turkey,TUR,1911,0.136,Asia
+Turkey,TUR,1912,0.113,Asia
+Turkey,TUR,1913,0.079,Asia
+Turkey,TUR,1914,0.074,Asia
+Turkey,TUR,1915,0.074,Asia
+Turkey,TUR,1916,0.071,Asia
+Turkey,TUR,1917,0.071,Asia
+Turkey,TUR,1918,0.074,Asia
+Turkey,TUR,1919,0.096,Asia
+Turkey,TUR,1920,0.097,Asia
+Turkey,TUR,1921,0.097,Asia
+Turkey,TUR,1922,0.102,Asia
+Turkey,TUR,1923,0.106,Asia
+Turkey,TUR,1924,0.118,Asia
+Turkey,TUR,1925,0.114,Asia
+Turkey,TUR,1926,0.108,Asia
+Turkey,TUR,1927,0.108,Asia
+Turkey,TUR,1928,0.108,Asia
+Turkey,TUR,1929,0.108,Asia
+Turkey,TUR,1930,0.11,Asia
+Turkey,TUR,1931,0.139,Asia
+Turkey,TUR,1932,0.139,Asia
+Turkey,TUR,1933,0.139,Asia
+Turkey,TUR,1934,0.139,Asia
+Turkey,TUR,1935,0.139,Asia
+Turkey,TUR,1936,0.139,Asia
+Turkey,TUR,1937,0.139,Asia
+Turkey,TUR,1938,0.139,Asia
+Turkey,TUR,1939,0.138,Asia
+Turkey,TUR,1940,0.141,Asia
+Turkey,TUR,1941,0.141,Asia
+Turkey,TUR,1942,0.141,Asia
+Turkey,TUR,1943,0.141,Asia
+Turkey,TUR,1944,0.141,Asia
+Turkey,TUR,1945,0.146,Asia
+Turkey,TUR,1946,0.208,Asia
+Turkey,TUR,1947,0.232,Asia
+Turkey,TUR,1948,0.234,Asia
+Turkey,TUR,1949,0.234,Asia
+Turkey,TUR,1950,0.335,Asia
+Turkey,TUR,1951,0.403,Asia
+Turkey,TUR,1952,0.4,Asia
+Turkey,TUR,1953,0.4,Asia
+Turkey,TUR,1954,0.39,Asia
+Turkey,TUR,1955,0.395,Asia
+Turkey,TUR,1956,0.354,Asia
+Turkey,TUR,1957,0.353,Asia
+Turkey,TUR,1958,0.346,Asia
+Turkey,TUR,1959,0.346,Asia
+Turkey,TUR,1960,0.221,Asia
+Turkey,TUR,1961,0.193,Asia
+Turkey,TUR,1962,0.289,Asia
+Turkey,TUR,1963,0.299,Asia
+Turkey,TUR,1964,0.314,Asia
+Turkey,TUR,1965,0.32,Asia
+Turkey,TUR,1966,0.517,Asia
+Turkey,TUR,1967,0.574,Asia
+Turkey,TUR,1968,0.574,Asia
+Turkey,TUR,1969,0.573,Asia
+Turkey,TUR,1970,0.541,Asia
+Turkey,TUR,1971,0.482,Asia
+Turkey,TUR,1972,0.499,Asia
+Turkey,TUR,1973,0.518,Asia
+Turkey,TUR,1974,0.568,Asia
+Turkey,TUR,1975,0.568,Asia
+Turkey,TUR,1976,0.568,Asia
+Turkey,TUR,1977,0.565,Asia
+Turkey,TUR,1978,0.562,Asia
+Turkey,TUR,1979,0.562,Asia
+Turkey,TUR,1980,0.335,Asia
+Turkey,TUR,1981,0.114,Asia
+Turkey,TUR,1982,0.114,Asia
+Turkey,TUR,1983,0.147,Asia
+Turkey,TUR,1984,0.401,Asia
+Turkey,TUR,1985,0.403,Asia
+Turkey,TUR,1986,0.414,Asia
+Turkey,TUR,1987,0.424,Asia
+Turkey,TUR,1988,0.487,Asia
+Turkey,TUR,1989,0.487,Asia
+Turkey,TUR,1990,0.517,Asia
+Turkey,TUR,1991,0.518,Asia
+Turkey,TUR,1992,0.533,Asia
+Turkey,TUR,1993,0.53,Asia
+Turkey,TUR,1994,0.536,Asia
+Turkey,TUR,1995,0.538,Asia
+Turkey,TUR,1996,0.547,Asia
+Turkey,TUR,1997,0.545,Asia
+Turkey,TUR,1998,0.544,Asia
+Turkey,TUR,1999,0.57,Asia
+Turkey,TUR,2000,0.586,Asia
+Turkey,TUR,2001,0.591,Asia
+Turkey,TUR,2002,0.636,Asia
+Turkey,TUR,2003,0.651,Asia
+Turkey,TUR,2004,0.657,Asia
+Turkey,TUR,2005,0.643,Asia
+Turkey,TUR,2006,0.643,Asia
+Turkey,TUR,2007,0.616,Asia
+Turkey,TUR,2008,0.554,Asia
+Turkey,TUR,2009,0.545,Asia
+Turkey,TUR,2010,0.525,Asia
+Turkey,TUR,2011,0.522,Asia
+Turkey,TUR,2012,0.508,Asia
+Turkey,TUR,2013,0.469,Asia
+Turkey,TUR,2014,0.426,Asia
+Turkey,TUR,2015,0.388,Asia
+Turkey,TUR,2016,0.308,Asia
+Turkey,TUR,2017,0.29,Asia
+Turkey,TUR,2018,0.295,Asia
+Turkey,TUR,2019,0.289,Asia
+Turkey,TUR,2020,0.292,Asia
+Turkey,TUR,2021,0.287,Asia
+Turkey,TUR,2022,0.285,Asia
+Turkey,TUR,2023,0.285,Asia
+Turkey,TUR,2024,0.289,Asia
+Turkey,TUR,2025,0.293,Asia
+Venezuela,VEN,1789,0.006,South America
+Venezuela,VEN,1790,0.006,South America
+Venezuela,VEN,1791,0.006,South America
+Venezuela,VEN,1792,0.006,South America
+Venezuela,VEN,1793,0.006,South America
+Venezuela,VEN,1794,0.006,South America
+Venezuela,VEN,1795,0.006,South America
+Venezuela,VEN,1796,0.006,South America
+Venezuela,VEN,1797,0.006,South America
+Venezuela,VEN,1798,0.006,South America
+Venezuela,VEN,1799,0.006,South America
+Venezuela,VEN,1800,0.008,South America
+Venezuela,VEN,1801,0.008,South America
+Venezuela,VEN,1802,0.008,South America
+Venezuela,VEN,1803,0.008,South America
+Venezuela,VEN,1804,0.008,South America
+Venezuela,VEN,1805,0.008,South America
+Venezuela,VEN,1806,0.008,South America
+Venezuela,VEN,1807,0.008,South America
+Venezuela,VEN,1808,0.008,South America
+Venezuela,VEN,1809,0.008,South America
+Venezuela,VEN,1810,0.065,South America
+Venezuela,VEN,1811,0.065,South America
+Venezuela,VEN,1812,0.049,South America
+Venezuela,VEN,1813,0.015,South America
+Venezuela,VEN,1814,0.012,South America
+Venezuela,VEN,1815,0.012,South America
+Venezuela,VEN,1816,0.012,South America
+Venezuela,VEN,1817,0.012,South America
+Venezuela,VEN,1818,0.012,South America
+Venezuela,VEN,1819,0.012,South America
+Venezuela,VEN,1830,0.169,South America
+Venezuela,VEN,1831,0.169,South America
+Venezuela,VEN,1832,0.216,South America
+Venezuela,VEN,1833,0.216,South America
+Venezuela,VEN,1834,0.216,South America
+Venezuela,VEN,1835,0.216,South America
+Venezuela,VEN,1836,0.205,South America
+Venezuela,VEN,1837,0.2,South America
+Venezuela,VEN,1838,0.2,South America
+Venezuela,VEN,1839,0.214,South America
+Venezuela,VEN,1840,0.192,South America
+Venezuela,VEN,1841,0.19,South America
+Venezuela,VEN,1842,0.19,South America
+Venezuela,VEN,1843,0.19,South America
+Venezuela,VEN,1844,0.19,South America
+Venezuela,VEN,1845,0.19,South America
+Venezuela,VEN,1846,0.19,South America
+Venezuela,VEN,1847,0.183,South America
+Venezuela,VEN,1848,0.125,South America
+Venezuela,VEN,1849,0.109,South America
+Venezuela,VEN,1850,0.111,South America
+Venezuela,VEN,1851,0.111,South America
+Venezuela,VEN,1852,0.111,South America
+Venezuela,VEN,1853,0.111,South America
+Venezuela,VEN,1854,0.111,South America
+Venezuela,VEN,1855,0.111,South America
+Venezuela,VEN,1856,0.111,South America
+Venezuela,VEN,1857,0.111,South America
+Venezuela,VEN,1858,0.106,South America
+Venezuela,VEN,1859,0.101,South America
+Venezuela,VEN,1860,0.129,South America
+Venezuela,VEN,1861,0.103,South America
+Venezuela,VEN,1862,0.052,South America
+Venezuela,VEN,1863,0.121,South America
+Venezuela,VEN,1864,0.124,South America
+Venezuela,VEN,1865,0.13,South America
+Venezuela,VEN,1866,0.13,South America
+Venezuela,VEN,1867,0.13,South America
+Venezuela,VEN,1868,0.104,South America
+Venezuela,VEN,1869,0.127,South America
+Venezuela,VEN,1870,0.09,South America
+Venezuela,VEN,1871,0.075,South America
+Venezuela,VEN,1872,0.075,South America
+Venezuela,VEN,1873,0.075,South America
+Venezuela,VEN,1874,0.075,South America
+Venezuela,VEN,1875,0.075,South America
+Venezuela,VEN,1876,0.075,South America
+Venezuela,VEN,1877,0.115,South America
+Venezuela,VEN,1878,0.122,South America
+Venezuela,VEN,1879,0.092,South America
+Venezuela,VEN,1880,0.076,South America
+Venezuela,VEN,1881,0.076,South America
+Venezuela,VEN,1882,0.076,South America
+Venezuela,VEN,1883,0.08,South America
+Venezuela,VEN,1884,0.112,South America
+Venezuela,VEN,1885,0.132,South America
+Venezuela,VEN,1886,0.137,South America
+Venezuela,VEN,1887,0.14,South America
+Venezuela,VEN,1888,0.14,South America
+Venezuela,VEN,1889,0.14,South America
+Venezuela,VEN,1890,0.18,South America
+Venezuela,VEN,1891,0.18,South America
+Venezuela,VEN,1892,0.164,South America
+Venezuela,VEN,1893,0.168,South America
+Venezuela,VEN,1894,0.226,South America
+Venezuela,VEN,1895,0.241,South America
+Venezuela,VEN,1896,0.241,South America
+Venezuela,VEN,1897,0.175,South America
+Venezuela,VEN,1898,0.169,South America
+Venezuela,VEN,1899,0.155,South America
+Venezuela,VEN,1900,0.025,South America
+Venezuela,VEN,1901,0.025,South America
+Venezuela,VEN,1902,0.025,South America
+Venezuela,VEN,1903,0.025,South America
+Venezuela,VEN,1904,0.025,South America
+Venezuela,VEN,1905,0.025,South America
+Venezuela,VEN,1906,0.025,South America
+Venezuela,VEN,1907,0.024,South America
+Venezuela,VEN,1908,0.024,South America
+Venezuela,VEN,1909,0.026,South America
+Venezuela,VEN,1910,0.026,South America
+Venezuela,VEN,1911,0.026,South America
+Venezuela,VEN,1912,0.026,South America
+Venezuela,VEN,1913,0.026,South America
+Venezuela,VEN,1914,0.023,South America
+Venezuela,VEN,1915,0.022,South America
+Venezuela,VEN,1916,0.021,South America
+Venezuela,VEN,1917,0.02,South America
+Venezuela,VEN,1918,0.02,South America
+Venezuela,VEN,1919,0.02,South America
+Venezuela,VEN,1920,0.024,South America
+Venezuela,VEN,1921,0.024,South America
+Venezuela,VEN,1922,0.024,South America
+Venezuela,VEN,1923,0.024,South America
+Venezuela,VEN,1924,0.024,South America
+Venezuela,VEN,1925,0.024,South America
+Venezuela,VEN,1926,0.024,South America
+Venezuela,VEN,1927,0.024,South America
+Venezuela,VEN,1928,0.024,South America
+Venezuela,VEN,1929,0.024,South America
+Venezuela,VEN,1930,0.024,South America
+Venezuela,VEN,1931,0.024,South America
+Venezuela,VEN,1932,0.024,South America
+Venezuela,VEN,1933,0.024,South America
+Venezuela,VEN,1934,0.024,South America
+Venezuela,VEN,1935,0.024,South America
+Venezuela,VEN,1936,0.053,South America
+Venezuela,VEN,1937,0.072,South America
+Venezuela,VEN,1938,0.074,South America
+Venezuela,VEN,1939,0.076,South America
+Venezuela,VEN,1940,0.083,South America
+Venezuela,VEN,1941,0.106,South America
+Venezuela,VEN,1942,0.109,South America
+Venezuela,VEN,1943,0.11,South America
+Venezuela,VEN,1944,0.113,South America
+Venezuela,VEN,1945,0.157,South America
+Venezuela,VEN,1946,0.184,South America
+Venezuela,VEN,1947,0.308,South America
+Venezuela,VEN,1948,0.374,South America
+Venezuela,VEN,1949,0.102,South America
+Venezuela,VEN,1950,0.096,South America
+Venezuela,VEN,1951,0.096,South America
+Venezuela,VEN,1952,0.095,South America
+Venezuela,VEN,1953,0.09,South America
+Venezuela,VEN,1954,0.09,South America
+Venezuela,VEN,1955,0.09,South America
+Venezuela,VEN,1956,0.09,South America
+Venezuela,VEN,1957,0.094,South America
+Venezuela,VEN,1958,0.263,South America
+Venezuela,VEN,1959,0.593,South America
+Venezuela,VEN,1960,0.65,South America
+Venezuela,VEN,1961,0.663,South America
+Venezuela,VEN,1962,0.658,South America
+Venezuela,VEN,1963,0.655,South America
+Venezuela,VEN,1964,0.631,South America
+Venezuela,VEN,1965,0.638,South America
+Venezuela,VEN,1966,0.638,South America
+Venezuela,VEN,1967,0.638,South America
+Venezuela,VEN,1968,0.643,South America
+Venezuela,VEN,1969,0.671,South America
+Venezuela,VEN,1970,0.685,South America
+Venezuela,VEN,1971,0.689,South America
+Venezuela,VEN,1972,0.702,South America
+Venezuela,VEN,1973,0.7,South America
+Venezuela,VEN,1974,0.736,South America
+Venezuela,VEN,1975,0.736,South America
+Venezuela,VEN,1976,0.736,South America
+Venezuela,VEN,1977,0.736,South America
+Venezuela,VEN,1978,0.732,South America
+Venezuela,VEN,1979,0.728,South America
+Venezuela,VEN,1980,0.731,South America
+Venezuela,VEN,1981,0.731,South America
+Venezuela,VEN,1982,0.731,South America
+Venezuela,VEN,1983,0.732,South America
+Venezuela,VEN,1984,0.731,South America
+Venezuela,VEN,1985,0.73,South America
+Venezuela,VEN,1986,0.726,South America
+Venezuela,VEN,1987,0.726,South America
+Venezuela,VEN,1988,0.732,South America
+Venezuela,VEN,1989,0.735,South America
+Venezuela,VEN,1990,0.741,South America
+Venezuela,VEN,1991,0.742,South America
+Venezuela,VEN,1992,0.733,South America
+Venezuela,VEN,1993,0.744,South America
+Venezuela,VEN,1994,0.748,South America
+Venezuela,VEN,1995,0.748,South America
+Venezuela,VEN,1996,0.748,South America
+Venezuela,VEN,1997,0.746,South America
+Venezuela,VEN,1998,0.73,South America
+Venezuela,VEN,1999,0.665,South America
+Venezuela,VEN,2000,0.573,South America
+Venezuela,VEN,2001,0.529,South America
+Venezuela,VEN,2002,0.495,South America
+Venezuela,VEN,2003,0.487,South America
+Venezuela,VEN,2004,0.475,South America
+Venezuela,VEN,2005,0.474,South America
+Venezuela,VEN,2006,0.45,South America
+Venezuela,VEN,2007,0.434,South America
+Venezuela,VEN,2008,0.432,South America
+Venezuela,VEN,2009,0.431,South America
+Venezuela,VEN,2010,0.419,South America
+Venezuela,VEN,2011,0.415,South America
+Venezuela,VEN,2012,0.399,South America
+Venezuela,VEN,2013,0.327,South America
+Venezuela,VEN,2014,0.312,South America
+Venezuela,VEN,2015,0.3,South America
+Venezuela,VEN,2016,0.293,South America
+Venezuela,VEN,2017,0.233,South America
+Venezuela,VEN,2018,0.213,South America
+Venezuela,VEN,2019,0.209,South America
+Venezuela,VEN,2020,0.206,South America
+Venezuela,VEN,2021,0.215,South America
+Venezuela,VEN,2022,0.209,South America
+Venezuela,VEN,2023,0.206,South America
+Venezuela,VEN,2024,0.196,South America
+Venezuela,VEN,2025,0.181,South America
