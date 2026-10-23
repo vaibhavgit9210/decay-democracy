@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
 <title>The Slow Decay of Democracy — a data detector, applied to India</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27%23060a13%27%2F%3E%3Ctext%20x%3D%2732%27%20y%3D%2746%27%20font-size%3D%2738%27%20text-anchor%3D%27middle%27%3E%F0%9F%97%B3%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
 <meta name="description" content="A quantitative decay detector calibrated on Hungary, Turkey and Venezuela (V-Dem data), applied to India. With a verdict.">
@@ -14,6 +17,10 @@
   --grid:#e1e0d9; --baseline:#c3c2b7; --border:rgba(11,11,11,.10);
   --s1:#2a78d6; --s2:#008300; --s3:#e87ba4; --s4:#eda100; --s5:#1baf7a;
   --good:#0ca30c; --critical:#d03b3b; --good-text:#006300; --critical-text:#b32222;
+  /* glass, the macOS 26+ material, for floating chrome (tooltips) */
+  --glass-solid:rgba(252,252,251,.84); --blur:blur(24px) saturate(180%);
+  --rim:inset 0 .5px 0 rgba(255,255,255,.95), inset 0 0 0 .5px rgba(0,0,0,.08);
+  --drop:0 10px 30px rgba(0,0,0,.10), 0 1px 3px rgba(0,0,0,.08);
 }
 @media (prefers-color-scheme: dark){
   :root:where(:not([data-theme="light"])){
@@ -23,6 +30,9 @@
     --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,.10);
     --s1:#3987e5; --s2:#008300; --s3:#d55181; --s4:#c98500; --s5:#199e70;
     --good-text:#0ca30c; --critical-text:#e66767;
+    --glass-solid:rgba(26,26,25,.84); --blur:blur(24px) saturate(170%);
+    --rim:inset 0 .5px 0 rgba(255,255,255,.2), inset 0 0 0 .5px rgba(255,255,255,.07);
+    --drop:0 10px 30px rgba(0,0,0,.32), 0 1px 3px rgba(0,0,0,.22);
   }
 }
 :root[data-theme="dark"]{
@@ -32,9 +42,12 @@
   --grid:#2c2c2a; --baseline:#383835; --border:rgba(255,255,255,.10);
   --s1:#3987e5; --s2:#008300; --s3:#d55181; --s4:#c98500; --s5:#199e70;
   --good-text:#0ca30c; --critical-text:#e66767;
+  --glass-solid:rgba(26,26,25,.84); --blur:blur(24px) saturate(170%);
+  --rim:inset 0 .5px 0 rgba(255,255,255,.2), inset 0 0 0 .5px rgba(255,255,255,.07);
+  --drop:0 10px 30px rgba(0,0,0,.32), 0 1px 3px rgba(0,0,0,.22);
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--page);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 16px 64px}
+body{background:var(--page);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 16px 64px;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
 main{max-width:920px;margin:0 auto}
 header{max-width:920px;margin:0 auto;padding:40px 0 8px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
 h1{font-size:clamp(26px,4.5vw,40px);line-height:1.15;letter-spacing:-.01em}
@@ -42,7 +55,7 @@ h1{font-size:clamp(26px,4.5vw,40px);line-height:1.15;letter-spacing:-.01em}
 h2{font-size:22px;margin:56px 0 6px}
 h2 .no{color:var(--muted);font-weight:600;margin-right:8px}
 .lede{color:var(--ink2);margin-bottom:18px;max-width:680px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;position:relative}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin:14px 0;position:relative}
 .chart-title{font-weight:600;font-size:15px}
 .chart-sub{color:var(--muted);font-size:13px;margin-bottom:10px}
 .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink2);margin:6px 0 4px}
@@ -50,17 +63,17 @@ h2 .no{color:var(--muted);font-weight:600;margin-right:8px}
 .legend i{width:16px;height:2px;border-radius:1px;display:inline-block}
 svg{display:block;width:100%;height:auto}
 svg text{font:12px system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:tabular-nums}
-.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--border);border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.18);padding:8px 10px;font-size:12.5px;display:none;z-index:5;min-width:150px}
+.tip{position:absolute;pointer-events:none;background:var(--glass-solid);-webkit-backdrop-filter:var(--blur);backdrop-filter:var(--blur);border-radius:12px;box-shadow:var(--rim),var(--drop);padding:9px 12px;font-size:12.5px;display:none;z-index:5;min-width:150px}
 .tip .ty{color:var(--muted);margin-bottom:4px}
 .tip .tr{display:flex;align-items:center;gap:7px;justify-content:space-between}
 .tip .tr b{font-variant-numeric:tabular-nums}
 .tip .tk{width:12px;height:2px;border-radius:1px;flex:none}
 .tip .tn{color:var(--ink2);flex:1;padding-right:8px;white-space:nowrap}
-.verdict{border-radius:12px;padding:22px;margin:26px 0;background:var(--surface);border:1px solid var(--border);border-left:6px solid var(--critical)}
+.verdict{border-radius:16px;padding:22px;margin:26px 0;background:var(--surface);border:1px solid var(--border);border-left:6px solid var(--critical)}
 .verdict .vtag{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--critical-text)}
 .verdict h3{font-size:20px;margin:8px 0 6px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
-.tile{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px}
+.tile{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px}
 .tile .tl{font-size:13px;color:var(--ink2);display:flex;align-items:center;gap:7px}
 .tile .tl i{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
 .tile .tv{font-size:26px;font-weight:600;margin:2px 0}
@@ -68,7 +81,7 @@ svg text{font:12px system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-nu
 .badge{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:99px;margin-top:8px;white-space:nowrap}
 .badge.fire{color:var(--critical-text);background:color-mix(in srgb,var(--critical) 12%,transparent)}
 .badge.ok{color:var(--good-text);background:color-mix(in srgb,var(--good) 12%,transparent)}
-.rules{font-size:14.5px;color:var(--ink2);background:var(--surface);border:1px dashed var(--baseline);border-radius:12px;padding:14px 18px;margin:14px 0}
+.rules{font-size:14.5px;color:var(--ink2);background:var(--surface);border:1px dashed var(--baseline);border-radius:16px;padding:14px 18px;margin:14px 0}
 .rules code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--ink)}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
 .note{font-size:13.5px;color:var(--muted);margin-top:10px}
@@ -80,11 +93,20 @@ th,td{padding:5px 12px;text-align:right;border-bottom:1px solid var(--grid);font
 th:first-child,td:first-child{text-align:left}
 th{color:var(--ink2);font-weight:600}
 a{color:var(--s1)}
-#themeBtn{background:var(--surface);border:1px solid var(--border);color:var(--ink2);border-radius:99px;padding:6px 14px;font:13px system-ui;cursor:pointer;flex:none;margin-top:6px}
+#themeBtn{background:var(--surface);border:0;box-shadow:var(--rim),0 1px 3px rgba(0,0,0,.08);color:var(--ink2);border-radius:999px;padding:7px 15px;font:13px system-ui;cursor:pointer;flex:none;margin-top:6px;transition:color .15s,box-shadow .15s,transform .1s}
+#themeBtn:hover{color:var(--ink);box-shadow:var(--rim),inset 0 0 0 1px var(--border),0 2px 8px rgba(0,0,0,.1)}
+#themeBtn:active{transform:scale(.97)}
+#themeBtn:focus-visible,summary:focus-visible{outline:2px solid var(--s1);outline-offset:3px}
+svg:focus-visible{outline:2px solid var(--s1);outline-offset:4px;border-radius:6px}
 ul.caveats{padding-left:22px;color:var(--ink2)}
 ul.caveats li{margin:6px 0}
 footer{max-width:920px;margin:56px auto 0;color:var(--muted);font-size:13px;border-top:1px solid var(--grid);padding-top:16px}
 .seq-hint{font-size:13px;color:var(--muted)}
+/* Reduce Transparency (System Settings > Accessibility > Display): solid surfaces, no blur */
+@media (prefers-reduced-transparency:reduce){
+  .tip{background:var(--surface);-webkit-backdrop-filter:none;backdrop-filter:none}
+}
+@media (prefers-reduced-motion:reduce){ #themeBtn{transition:none} }
 </style>
 </head>
 <body>
