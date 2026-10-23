@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
-<title>The Slow Decay of Democracy — a data detector, applied to India</title>
+<title>The Slow Decay of Democracy: a data detector, applied to India</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Crect%20width%3D%2764%27%20height%3D%2764%27%20rx%3D%2714%27%20fill%3D%27%23060a13%27%2F%3E%3Ctext%20x%3D%2732%27%20y%3D%2746%27%20font-size%3D%2738%27%20text-anchor%3D%27middle%27%3E%F0%9F%97%B3%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
 <meta name="description" content="A quantitative decay detector calibrated on Hungary, Turkey and Venezuela (V-Dem data), applied to India. With a verdict.">
 <style>
@@ -113,28 +113,28 @@ footer{max-width:920px;margin:56px auto 0;color:var(--muted);font-size:13px;bord
 <header>
   <div>
     <h1>The Slow Decay of Democracy</h1>
-    <p class="sub">Democracies rarely die in a coup anymore — they erode, one institution at a time.
+    <p class="sub">Democracies rarely die in a coup anymore. They erode, one institution at a time.
     Can that erosion be detected in data? We calibrate a detector on three documented cases,
-    check it stays quiet on a healthy control, then point it at <strong>India</strong> — and reach a verdict.</p>
+    check it stays quiet on a healthy control, then point it at <strong>India</strong>, and reach a verdict.</p>
   </div>
   <button id="themeBtn" aria-label="Toggle color theme">◐ theme</button>
 </header>
 
 <main>
 <div class="verdict" id="tldr">
-  <span class="vtag">■ VERDICT — HYPOTHESIS SUPPORTED</span>
+  <span class="vtag">■ VERDICT: HYPOTHESIS SUPPORTED</span>
   <h3>Yes. India shows the same decay signature as documented backsliders.</h3>
-  <p style="color:var(--ink2)">The detector — calibrated on Hungary, Turkey and Venezuela, quiet on Switzerland — <strong>fires for India</strong>: a fall of −0.33 in the liberal-democracy index from its 1998 peak, sustained for 17 years, onset ≈ 2013, in the classic order (press first, courts last). Details, method and caveats below.</p>
+  <p style="color:var(--ink2)">The detector (calibrated on Hungary, Turkey and Venezuela, quiet on Switzerland) <strong>fires for India</strong>: a fall of −0.33 in the liberal-democracy index from its 1998 peak, sustained for 17 years, onset ≈ 2013, in the classic order (press first, courts last). Details, method and caveats below.</p>
 </div>
 
 <h2><span class="no">01</span>What slow decay looks like</h2>
-<p class="lede">V-Dem's <em>liberal democracy index</em> (0–1) scores free elections <em>plus</em> the liberal guardrails — press freedom, civil liberties, courts that bind the executive. Three countries with well-documented backsliding, one healthy control, and India:</p>
+<p class="lede">V-Dem's <em>liberal democracy index</em> (0-1) scores free elections <em>plus</em> the liberal guardrails: press freedom, civil liberties, courts that bind the executive. Three countries with well-documented backsliding, one healthy control, and India:</p>
 <div class="card" id="chartMain"></div>
 
 <h2><span class="no">02</span>A decay detector</h2>
 <p class="lede">Slow decay has a measurable shape. Borrowing thresholds from V-Dem's “Episodes of Regime Transformation” research, a country is in a decay episode when:</p>
 <div class="rules">
-  <strong>DETECTOR</strong> — fires when, from the country's post-1990 peak of the liberal-democracy index:<br>
+  <strong>DETECTOR</strong>: fires when, from the country's post-1990 peak of the liberal-democracy index:<br>
   ① total decline ≥ <code>0.10</code> &nbsp;·&nbsp; ② the index stays below <code>peak − 0.05</code> for ≥ <code>5 consecutive years</code>.<br>
   Onset = start of the steepest 10-year fall. Calibration: must fire on Hungary, Turkey, Venezuela; must stay quiet on Switzerland.
 </div>
@@ -147,7 +147,7 @@ footer{max-width:920px;margin:56px auto 0;color:var(--muted);font-size:13px;bord
 <p class="seq-hint">Read a row left→right: dots near 0 fell with the onset; dots to the right held out longer. Hover any dot for the exact year and how far that institution has fallen since.</p>
 
 <h2><span class="no">04</span>India under the lens</h2>
-<p class="lede">India's six V-Dem indices since 1990. The dashed line marks the detected onset (2013). Expression and media fall first and hardest; judicial constraints hold out longest — the same order as Hungary and Turkey:</p>
+<p class="lede">India's six V-Dem indices since 1990. The dashed line marks the detected onset (2013). Expression and media fall first and hardest; judicial constraints hold out longest, the same order as Hungary and Turkey:</p>
 <div class="grid2" id="smallMultiples"></div>
 
 <h2><span class="no">05</span>Same clock, same curve</h2>
@@ -158,26 +158,26 @@ footer{max-width:920px;margin:56px auto 0;color:var(--muted);font-size:13px;bord
 <div class="verdict">
   <span class="vtag">■ THE SENTENCE UNDER TEST</span>
   <h3>“India shows the signs of slow democratic decay seen in countries with a documented history of it.”</h3>
-  <p style="color:var(--ink2);margin-bottom:10px"><strong>Verdict: correct — the sentence makes sense and is supported by the data.</strong></p>
+  <p style="color:var(--ink2);margin-bottom:10px"><strong>Verdict: correct. The sentence makes sense and is supported by the data.</strong></p>
   <ul class="caveats" style="list-style:none;padding-left:0">
-    <li>✔ The detector fires: −0.333 from the 1998 peak (0.593 → 0.260 in 2025), below threshold for 17 straight years — a larger fall than Turkey's at the same point in its episode.</li>
+    <li>✔ The detector fires: −0.333 from the 1998 peak (0.593 → 0.260 in 2025), below threshold for 17 straight years, a larger fall than Turkey's at the same point in its episode.</li>
     <li>✔ The sequence matches the backslider playbook: expression/media first (2014, −0.44), civil liberties next (2014, −0.23), association (2015, −0.23), judiciary last and least (2019, −0.16).</li>
-    <li>✔ Aligned at onset, India's curve shadows Hungary's — the canonical slow-decay case.</li>
+    <li>✔ Aligned at onset, India's curve shadows Hungary's, the canonical slow-decay case.</li>
     <li>✔ The control (Switzerland) stays quiet, so the detector isn't just flagging everything.</li>
   </ul>
 </div>
-<p class="lede" style="margin-top:14px">Honest caveats — what the verdict does <em>not</em> say:</p>
+<p class="lede" style="margin-top:14px">Honest caveats, what the verdict does <em>not</em> say:</p>
 <ul class="caveats">
   <li><strong>One family of sources.</strong> V-Dem is expert-coded (point estimates carry uncertainty bands). It is, however, corroborated: Freedom House cut India to “Partly Free” (2021) and V-Dem has classified India as an “electoral autocracy” since its 2021 report.</li>
-  <li><strong>Decay ≠ destiny.</strong> The index measures the past, not the future. India's judiciary still scores 0.667 — closer to Hungary's than to Venezuela's collapsed 0.017 — and elections remain genuinely competitive (2024 returned a coalition, and the series shows a small 2024 uptick before a new low in 2025).</li>
-  <li><strong>Reversals happen.</strong> Poland (2023–) and Brazil show backsliding can be stopped and partially undone while elections still function. That door is measurably still open in India's data.</li>
-  <li><strong>“Slow” is the point.</strong> No single year looks like a rupture — the average annual drop is ~0.02. That is exactly why decay is detected with a decade-scale window, and why it is easy to deny in the moment.</li>
+  <li><strong>Decay ≠ destiny.</strong> The index measures the past, not the future. India's judiciary still scores 0.667, closer to Hungary's than to Venezuela's collapsed 0.017, and elections remain genuinely competitive (2024 returned a coalition, and the series shows a small 2024 uptick before a new low in 2025).</li>
+  <li><strong>Reversals happen.</strong> Poland (2023-) and Brazil show backsliding can be stopped and partially undone while elections still function. That door is measurably still open in India's data.</li>
+  <li><strong>“Slow” is the point.</strong> No single year looks like a rupture: the average annual drop is ~0.02. That is exactly why decay is detected with a decade-scale window, and why it is easy to deny in the moment.</li>
 </ul>
 
 <h2><span class="no">07</span>Method &amp; data</h2>
-<p class="lede">Data: <a href="https://v-dem.net">V-Dem v15 (2025)</a> via <a href="https://ourworldindata.org/democracy">Our World in Data</a> — six indices (liberal democracy, electoral democracy, freedom of expression, judicial constraints on the executive, civil liberties, freedom of association), 1975–2025, best point estimates. The full pipeline (raw CSVs + <code style="font-family:ui-monospace,Menlo,monospace;font-size:13px">analyze.py</code>) is in the <a href="https://github.com/vaibhavgit9210/decay-democracy">repo</a>; every number on this page is reproducible from it.</p>
+<p class="lede">Data: <a href="https://v-dem.net">V-Dem v15 (2025)</a> via <a href="https://ourworldindata.org/democracy">Our World in Data</a>, six indices (liberal democracy, electoral democracy, freedom of expression, judicial constraints on the executive, civil liberties, freedom of association), 1975-2025, best point estimates. The full pipeline (raw CSVs + <code style="font-family:ui-monospace,Menlo,monospace;font-size:13px">analyze.py</code>) is in the <a href="https://github.com/vaibhavgit9210/decay-democracy">repo</a>; every number on this page is reproducible from it.</p>
 <details>
-  <summary>Table view — liberal democracy index, 5-year steps + recent years</summary>
+  <summary>Table view: liberal democracy index, 5-year steps + recent years</summary>
   <div class="twrap"><table id="dataTable" aria-label="Liberal democracy index by country and year"></table></div>
 </details>
 </main>
@@ -292,7 +292,7 @@ function seriesFor(key,countries,from){
 function drawAll(){
   /* 01 — main chart */
   lineChart(document.getElementById('chartMain'),{
-    title:'Liberal democracy index, 1975–2025',
+    title:'Liberal democracy index, 1975-2025',
     sub:'V-Dem v15, best estimate · 1 = full liberal democracy · dashed lines mark detected onsets',
     series:seriesFor('libdem',COUNTRIES,1975),xmin:1975,xmax:2025,
     annot:[{x:1997,label:'VEN 1997'},{x:2007,label:'TUR 2007'},{x:2013,label:'IND 2013'}]
@@ -350,7 +350,7 @@ function drawAll(){
       const hit=el('circle',{cx,cy,r:13,fill:'transparent',style:'cursor:default'},svg);
       hit.addEventListener('pointerenter',()=>{
         tip2.innerHTML='';
-        const ty=document.createElement('div');ty.className='ty';ty.textContent=`${c} — ${IDXNAME[k]}`;tip2.appendChild(ty);
+        const ty=document.createElement('div');ty.className='ty';ty.textContent=`${c} · ${IDXNAME[k]}`;tip2.appendChild(ty);
         const l1=document.createElement('div');l1.className='tr';l1.innerHTML='<span class="tn">began falling</span>';
         const b1=document.createElement('b');b1.textContent=`${s.first_fall} (onset ${off>=0?'+':''}${off})`;l1.appendChild(b1);
         const l2=document.createElement('div');l2.className='tr';l2.innerHTML='<span class="tn">fall since</span>';
@@ -395,7 +395,7 @@ function drawAll(){
   tbl.appendChild(thr);
   years.forEach(y=>{
     const tr=document.createElement('tr');tr.appendChild(document.createElement('td')).textContent=y;
-    COUNTRIES.forEach(c=>{const v=A.series[c].libdem[y];tr.appendChild(document.createElement('td')).textContent=v!=null?v.toFixed(3):'—';});
+    COUNTRIES.forEach(c=>{const v=A.series[c].libdem[y];tr.appendChild(document.createElement('td')).textContent=v!=null?v.toFixed(3):'-';});
     tbl.appendChild(tr);
   });
 }
